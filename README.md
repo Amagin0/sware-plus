@@ -1,24 +1,33 @@
-# README
+# SwAre+ (sweets arrange recepi + alpha)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+お菓子を使ったアレンジレシピの紹介と感想、評価を共有できるサイト
 
-Things you may want to cover:
+### サイトテーマ
+お菓子＋αのアレンジレシピのシェア
 
-* Ruby version
+### テーマを選んだ理由
+お菓子をアレンジして食べている人も中にはいますが、それのみを共有するサイトがありませんでした。
+お菓子を作っている会社の公式ページにもレシピは載っていたりするが、それ以外の楽しみ方も知りたい。
+手軽に検索出来て、楽しめるサイトがあれば自分も使ってみたいなと思ったので、このテーマを選びました。
 
-* System dependencies
+### ターゲットユーザ
+お菓子が好きな人
+お菓子作りが好きな人
+お菓子にひと手間を加えたものを食べてみたい人
 
-* Configuration
+### 主な利用シーン
+おいしいレシピを共有したい人や、他の人がオススメするレシピを知りたいとき。
 
-* Database creation
+## 設計書
+<>
 
-* Database initialization
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1E4Quehglf9PxM1XTE-ft2X5-hJ5dmoJhsI-UJlgzVmY/edit#gid=0>
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
