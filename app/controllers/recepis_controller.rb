@@ -1,4 +1,7 @@
 class RecepisController < ApplicationController
+  before_action :set_recepi, only: %i[show destroy]
+
+
   def new
     @recepi = Recepi.new
   end
@@ -8,7 +11,6 @@ class RecepisController < ApplicationController
   end
 
   def show
-    @recepi = Recepi.find(params[:id])
     # impressionist(@recepi, nil, unique: [:session_hash.to_s])
   end
 
@@ -24,9 +26,15 @@ class RecepisController < ApplicationController
   end
 
   def destroy
+    @recepi.destroy
+    redirect_to recepis_path, notice: "レシピを削除しました"
   end
 
   private
+
+  def set_recepi
+    @recepi = Recepi.find(params[:id])
+  end
 
   def recepi_params
     params.require(:recepi).permit(:recepi_title, :recepi_describe, :recepi_body, :recepi_image)

@@ -2,10 +2,10 @@ Top Page!!
 
 <% if customer_signed_in? %>
 <li>
-  <%= link_to 'Mypage', "#" %>
+  <%= link_to 'Mypage', customers_path %>
 </li>
 <li>
-  <%= link_to 'Recepis', recepis_path %>
+  <%= link_to 'みんなのRecepis', recepis_path %>
 </li>
 <li>
   <%=link_to "New Recepi" , new_recepi_path %>
@@ -16,11 +16,9 @@ Top Page!!
 
 <% else %>
 <li>
-  <%= link_to 'Recepis', recepis_path %>
+  <%= link_to 'みんなのRecepis', recepis_path %>
 </li>
 <li>
-  <%= link_to 'Account','/customers/sign_up ' %></li>
-<li>
-  <%=link_to "New Recepi" , new_recepi_path %>
+  <%= link_to 'Account','/customers/sign_up ' %>
 </li>
 <% end %>

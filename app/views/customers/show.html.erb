@@ -1,2 +1,28 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+<h1><%= current_customer.name %>さんのData</h1>
+
+    <table class="table table-borderless">
+      <tr>
+        <th>投稿数：</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th>お気に入り：</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th>フォロー：</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th>フォロワー：</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th>登録日：</th>
+        <td></td>
+      </tr>
+    </table>
+
+<li>
+  <%= link_to "TOP", root_path %>
+</li>

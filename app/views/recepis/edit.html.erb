@@ -1,0 +1,23 @@
+ <h2>レシピ編集</h2>
+  <%= form_with model: @recepi, local: true do |f| %>
+    <table class="table table-borderless">
+      <tr>
+        <th><%= f.label :"タイトル" %></th>
+        <td><%= f.text_field :recepi_title, autofocus: true, size: "50"%></td>
+      </tr>
+      <tr>
+        <th><%= f.label :"説明" %></th>
+        <td><%= f.text_field :recepi_describe, autofocus: true, size: "50" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :"作り方" %></th>
+        <td><%= f.text_area :recepi_body, autofocus: true, size: "52" %></td>
+      </tr>
+    </table>
+    <div>
+      <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+    </div>
+  <% end %>
+<li>
+  <%= link_to "TOP", root_path %>
+</li>

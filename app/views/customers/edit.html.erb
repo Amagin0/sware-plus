@@ -1,0 +1,20 @@
+ <h2>会員情報編集</h2>
+  <%= form_with model: @customer, local: true do |f| %>
+    <table class="table table-borderless">
+      <tr>
+        <th><%= f.label :"氏名" %></th>
+        <td><%= f.text_field :name, autofocus: true, size: "50" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :"メールアドレス" %></th>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50" %></td>
+      </tr>
+    </table>
+    <div>
+      <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+      <%= link_to "退会する", "#" ,class: "btn btn-danger" %>
+    </div>
+  <% end %>
+<li>
+  <%= link_to "TOP", root_path %>
+</li>

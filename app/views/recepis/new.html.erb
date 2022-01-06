@@ -8,7 +8,7 @@
       </tr>
       <tr>
         <th>説明</th>
-        <td><%= f.text_field :recepi_title, autofocus: true, placeholder: "レシピの説明、経緯など", size: "50" %></td>
+        <td><%= f.text_field :recepi_describe, autofocus: true, placeholder: "レシピの説明、経緯など", size: "50" %></td>
       </tr>
       <tr>
         <th>作り方</th>
@@ -24,3 +24,6 @@
       </tr>
   </table>
     <% end %>
+<li>
+  <%= link_to "TOP", root_path %>
+</li>
