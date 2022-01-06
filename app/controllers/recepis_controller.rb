@@ -1,5 +1,5 @@
 class RecepisController < ApplicationController
-  before_action :set_recepi, only: %i[show destroy]
+  before_action :set_recepi, only: %i[show edit update destroy]
 
 
   def new
@@ -13,6 +13,16 @@ class RecepisController < ApplicationController
   def show
     # impressionist(@recepi, nil, unique: [:session_hash.to_s])
   end
+
+  def edit
+  end
+
+  def update
+    if @recepi.update(recepi_params)
+      redirect_to recepi_path(@recepi), notice: "レシピを編集しました"
+    end
+  end
+
 
   def create
     @recepi = Recepi.new(recepi_params)
