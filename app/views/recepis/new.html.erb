@@ -1,0 +1,26 @@
+<h2>レシピ新規登録</h2>
+
+    <%= form_with model: @recepi, local: true do |f| %>
+  <table class="table table-borderless">
+      <tr>
+        <th>タイトル</th>
+        <td><%= f.text_field :recepi_title, autofocus: true, placeholder: "タイトルを入力してください", size: "50" %></td>
+      </tr>
+      <tr>
+        <th>説明</th>
+        <td><%= f.text_field :recepi_title, autofocus: true, placeholder: "レシピの説明、経緯など", size: "50" %></td>
+      </tr>
+      <tr>
+        <th>作り方</th>
+        <td><%= f.text_area :recepi_body, autofocus: true, placeholder: "レシピの作り方", size: "52" %></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><%= f.attachment_field :recepi_image %></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><%= f.submit "レシピ作成", class: "btn btn-secondary px-5 ml-3" %></td>
+      </tr>
+  </table>
+    <% end %>

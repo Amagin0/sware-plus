@@ -1,0 +1,7 @@
+<h2>レシピ一覧</h2>
+
+<% @recepi.each do |recepi| %>
+  <%= attachment_image_tag(recepi, :recepi_image, :fill, 50, 50, format:'png', fallback: "no-image-icon.png") %>
+  <%= recepi.recepi_title %>
+  <%= recepi.recepi_describe %>
+<% end %>

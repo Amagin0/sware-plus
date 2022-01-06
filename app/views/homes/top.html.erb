@@ -1,1 +1,26 @@
 Top Page!!
+
+<% if customer_signed_in? %>
+<li>
+  <%= link_to 'Mypage', "#" %>
+</li>
+<li>
+  <%= link_to 'Recepis', recepis_path %>
+</li>
+<li>
+  <%=link_to "New Recepi" , new_recepi_path %>
+</li>
+<li>
+  <%= link_to 'Log out', destroy_customer_session_path, method: :delete %>
+</li>
+
+<% else %>
+<li>
+  <%= link_to 'Recepis', recepis_path %>
+</li>
+<li>
+  <%= link_to 'Account','/customers/sign_up ' %></li>
+<li>
+  <%=link_to "New Recepi" , new_recepi_path %>
+</li>
+<% end %>

@@ -1,0 +1,74 @@
+<%= stylesheet_link_tag 'signup', media: 'all'%>
+<%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="container">
+    <div class="blueBg">
+      <div class="box signin">
+        <h2>Already Have an Account ?</h2>
+        <button class="signinBtn">Sign in</button>
+      </div>
+      <div class="box signup">
+        <h2>Don't Have an Account ?</h2>
+        <button class="signupBtn">Sign up</button>
+      </div>
+    </div>
+    <div class="formBx">
+      <div class="form signinForm">
+        <h2>Sign In</h2>
+        <%= form_for(:customer, :url => session_path(:customer)) do |f| %>
+          <div class="field">
+            <%= f.label :Email %>
+            <%= f.text_field :email %>
+          </div>
+          <div class="field">
+            <%= f.label :Password %>
+            <%= f.password_field :password %>
+            <%= f.submit 'Sign in' %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form signupForm">
+      <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
+        <h2>Sign Up</h2>
+        <div class="field">
+          <%= f.label :Name %>
+          <%= f.text_field :name, autofocus: true %>
+        </div>
+        <div class="field">
+          <%= f.label :Email %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        <div class="field">
+          <%= f.label :Password %>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+        <div class="field">
+          <%= f.label :Password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.submit "Sign up" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+  <script>
+    const signinBtn = document.querySelector('.signinBtn');
+    const signupBtn = document.querySelector('.signupBtn');
+    const formBx = document.querySelector('.formBx');
+    const body = document.querySelector('body')
+
+    signupBtn.onclick = function () {
+      formBx.classList.add('active')
+      body.classList.add('active')
+    }
+
+    signinBtn.onclick = function () {
+      formBx.classList.remove('active')
+      body.classList.remove('active')
+    }
+  </script>
