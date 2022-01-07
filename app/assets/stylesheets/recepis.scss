@@ -22,7 +22,7 @@ body
 {
   position: relative;
   width: calc(200 / 1400 * 100vw) !important;
-  height: calc(350 / 1400 * 100vw);
+  height: calc(330 / 1400 * 100vw);
   padding: calc(10 / 1400 * 100vw);
   box-shadow: inset 5px 5px 5px rgba(0,0,0,0.05),
               inset -5px -5px 5px rgba(255,255,255,0.05),
@@ -47,7 +47,7 @@ body
   justify-content: center;
   align-items: center;
   z-index: 1;
-  transform: translateY(90px);
+  transform: translateY(calc(55 / 1400 * 100vw));
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -82,7 +82,7 @@ body
   padding: 0;
   color: #fff;
   text-align: center;
-  font-size: 1.5em;
+  font-size: calc(15 / 1400 * 100vw);
 }
 
 .container .card .face.face2
@@ -92,10 +92,10 @@ body
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: calc(5 / 1400 * 100vw);
   box-sizing: border-box;
   box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-  transform: translateY(-120px);
+  transform: translateY(calc(-90 / 1400 * 100vw));
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   text-align: center;
@@ -108,23 +108,27 @@ body
 .container .card .face.face2 .content p
 {
   /* margin: 0; */
-  padding: 3px;
+  padding: calc(3 / 1400 * 100vw);
   padding-bottom: 0px;
+  font-size: calc(13 / 1400 * 100vw);
+
 }
 
 .container .card .face.face2 .content a
 {
   position: relative;
   display: inline-block;
-  padding: 7px 20px;
+  padding: calc(5 / 1400 * 100vw);
   text-decoration: none;
-  font-weight: 900;
+  font-weight: 500;
   background-color: #03a9f4;
   color: #ebf5fc;
-  margin-top: 3px;
+  margin-top: calc(2 / 1400 * 100vw);
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
   text-align: center;
+  font-size: calc(15 / 1400 * 100vw);
+
 }
 
 .container .card .face.face2 .content a:hover
