@@ -1,22 +1,26 @@
 <h2>レシピ詳細</h2>
 <!--<div class="container">-->
   <!--<div class="row">-->
-    <div class="card text-center" style="max-width: 50rem;">
+    <div class="card offset-2" style="max-width: 40rem;">
       <img class="card-img-top"><%= attachment_image_tag(@recepi, :recepi_image, :fill, 100, 100, format:'png', fallback: "no-image-icon.png") %></p>
       <div class="card-body">
-        <h4 class="card-title"><strong><%= @recepi.recepi_title %></strong></p>
+        <h4 class="card-title text-center"><strong><%= @recepi.recepi_title %></strong></h4>
         <p class="card-text">
-          <span class="mark"><strong>材料</strong></span><br>
-          <%= @recepi.recepi_describe %><br>
-          <span class="mark"><strong>作り方</strong></span><br>
-          <%= @recepi.recepi_body %>
+          <span class="mark text-left"><strong>材料</strong></span><br>
+          <p class="text-center"><%= @recepi.recepi_describe %></p><br>
+        </p>
+        <p class="card-text">
+          <span class="mark text-left"><strong>作り方</strong></span><br>
+          <p class="text-center"><%= @recepi.recepi_body %></p>
         </p>
       <!--<td>閲覧数：<%#= @recepi.impressionist_count(:filter => :session_hash) %></td>
       <td class="recepi-rate" data-score="<%#= @recepi.rate %>"></td>-->
+        <div class="card-text text-center">
         <% if @recepi.customer == current_customer %>
           <%= link_to "編集", edit_recepi_path(@recepi), class: "btn btn-primary rounded-pill" %>
           <%= link_to '削除', recepi_path(@recepi), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger rounded-pill destroy_recepi_#{@recepi.id}"%>
         <% end %>
+        </div>
   		  <div class="card-footer text-right">
     		  <%= link_to customer_path(@recepi.customer) do %>
           <%#= attachment_image_tag(@recepi.customer, :customer_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %><br>
@@ -25,8 +29,8 @@
         <% end %>
       </div>
     </div>
-  </div>
-</div>
+<!--  </div>-->
+<!--</div>-->
 <li>
   <%= link_to "TOP", root_path %>
 </li>

@@ -6,13 +6,19 @@
         <td><%= f.text_field :recepi_title, autofocus: true, size: "50"%></td>
       </tr>
       <tr>
-        <th><%= f.label :"説明" %></th>
-        <td><%= f.text_field :recepi_describe, autofocus: true, size: "50" %></td>
+        <th><%= f.label :"材料" %></th>
+        <td><%= f.text_area :recepi_describe, autofocus: true, size: "53" %></td>
       </tr>
       <tr>
         <th><%= f.label :"作り方" %></th>
-        <td><%= f.text_area :recepi_body, autofocus: true, size: "52" %></td>
+        <td><%= f.text_area :recepi_body, autofocus: true, size: "53" %></td>
       </tr>
+      <tr>
+        <th></th>
+        <td><%= f.attachment_field :recepi_image %></td>
+        </tr>
+      <tr>
+
     </table>
     <div>
       <%= f.submit "編集内容を保存", class: "btn btn-primary rounded-pill" %>

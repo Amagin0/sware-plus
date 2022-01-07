@@ -3,7 +3,7 @@
   <div class="container">
     <div class="card">
       <div class="imgBx">
-        <img src="#">
+        <%= image_tag asset_path("data.jpg", alt: "MyData") %>
       </div>
       <div class="contentBx">
         <div class="content">
@@ -15,7 +15,7 @@
     </div>
     <div class="card">
       <div class="imgBx">
-        <img src="#">
+        <%= image_tag asset_path("my_recipe.jpg", alt: "MyRecipe") %>
       </div>
       <div class="contentBx">
         <div class="content">
@@ -27,7 +27,7 @@
     </div>
     <div class="card">
       <div class="imgBx">
-        <img src="#">
+        <%= image_tag asset_path("favorite.jpg", alt: "Favorite") %>
       </div>
       <div class="contentBx">
         <div class="content">
@@ -39,7 +39,7 @@
     </div>
     <div class="card">
       <div class="imgBx">
-        <img src="#">
+        <%= image_tag asset_path("recipes_of_others.jpg", alt: "recipes_of_others") %>
       </div>
       <div class="contentBx">
         <div class="content">
@@ -51,7 +51,7 @@
     </div>
     <div class="card">
       <div class="imgBx">
-        <img src="#">
+        <%= image_tag asset_path("edit.jpg", alt: "Edit") %>
       </div>
       <div class="contentBx">
         <div class="content">
@@ -63,7 +63,7 @@
     </div>
     <div class="card">
       <div class="imgBx">
-        <img src="#">
+        <%= image_tag asset_path("ranking.jpg", alt: "Ranking") %>
       </div>
       <div class="contentBx">
         <div class="content">
@@ -74,3 +74,7 @@
       </div>
     </div>
   </div>
+
+<li>
+  <%= link_to "TOP", root_path %>
+</li>
