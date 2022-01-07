@@ -1,5 +1,5 @@
 # ***SwAre+***
-「*sweets arrange recepi + alpha*」からもじった造語です。
+「*sweets arrange recipe + alpha*」からもじってます。
 <br>
 
 ## :pencil:サイト概要

@@ -1,0 +1,26 @@
+<%= stylesheet_link_tag 'recepis', media: 'all' %>
+
+<% @customer.recepis.each do |recepi| %>
+  <div class="container">
+    <div class="card">
+      <div class="face face1">
+        <div class="content">
+          <div class="img">
+            <%= attachment_image_tag(recepi, :recepi_image, :fill, 100, 100, format:'png', fallback: "no-image-icon.png") %>
+          </div>
+          <h3><%= recepi.recepi_title %></h3>
+        </div>
+      </div>
+      <div class="face face2">
+        <div class="content">
+          <p><%= recepi.recepi_describe %></p>
+          <!--<a href="#">Read More</a>-->
+          <%= link_to "Read More", "#" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<li>
+  <%= link_to "TOP", root_path %>
+</li>

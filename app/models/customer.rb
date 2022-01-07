@@ -7,4 +7,8 @@ class Customer < ApplicationRecord
   has_many :recepis, dependent: :destroy
 
   validates :name, presence: true
+
+  # def recepis
+  #   return Recepi.where(customer_id: self.id)
+  # end
 end
