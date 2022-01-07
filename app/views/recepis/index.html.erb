@@ -1,11 +1,26 @@
-<h2>レシピ一覧</h2>
+<%= stylesheet_link_tag 'recepis', media: 'all' %>
+<h1>レシピ一覧</h1>
 
 <% @recepi.each do |recepi| %>
-  <%= link_to recepi_path(recepi) do %>
-    <%= attachment_image_tag(recepi, :recepi_image, :fill, 100, 100, format:'png', fallback: "no-image-icon.png") %>
-  <% end %>
-  <%= recepi.recepi_title %>
-  <%= recepi.recepi_describe %>
+  <div class="container">
+    <div class="card">
+      <div class="face face1">
+        <div class="content">
+          <div class="img">
+            <%= link_to recepi_path(recepi) do %>
+              <%= attachment_image_tag(recepi, :recepi_image, :fill, 100, 100, format:'png', fallback: "no-image-icon.png") %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="face face2">
+        <div class="content">
+          <p><%= recepi.recepi_title %></p>
+          <%= link_to "Read More", recepi_path(recepi) %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
 
 <li>

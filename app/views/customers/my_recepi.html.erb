@@ -8,13 +8,12 @@
           <div class="img">
             <%= attachment_image_tag(recepi, :recepi_image, :fill, 100, 100, format:'png', fallback: "no-image-icon.png") %>
           </div>
-          <h3><%= recepi.recepi_title %></h3>
         </div>
       </div>
       <div class="face face2">
         <div class="content">
-          <p><%= recepi.recepi_describe %></p>
-          <%= link_to "Read More", "#" %>
+          <p><%= recepi.recepi_title %></p>
+          <%= link_to "Read More", recepi_path(recepi) %>
         </div>
       </div>
     </div>
