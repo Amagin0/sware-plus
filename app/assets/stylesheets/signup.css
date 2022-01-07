@@ -10,7 +10,7 @@ body
 
 body.active
 {
-  background: #f43648;
+  background: #e480d3;
 }
 
 .container
@@ -161,5 +161,5 @@ body.active
 
 .formBx.active .signupForm input[type="submit"]
 {
-  background: #f43648;
+  background: #fdc8f4;
 }
