@@ -6,6 +6,7 @@
         <h2>SwAre+</h2>
         <h2>SwAre+</h2>
         <h2>SwAre+</h2>
+        <!--４つ使って波を表現している-->
       </div>
       <div class="background">
         <div class="choco shadows"></div>
@@ -19,6 +20,7 @@
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
+
         <% if customer_signed_in? %>
           <div class="choco shadows">
             <%= link_to 'Mypage', customers_path %>
@@ -26,6 +28,7 @@
         <% else %>
           <div class="choco shadows"></div>
         <% end %>
+
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
@@ -33,7 +36,7 @@
         <div class="choco shadows"></div>
 
         <div class="choco shadows">
-            <%= link_to 'Recepis', recepis_path %>
+            <%= link_to 'Recipes', recepis_path %>
         </div>
 
         <div class="choco shadows"></div>
@@ -41,25 +44,29 @@
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
+
         <% if customer_signed_in? %>
           <div class="choco shadows">
-            <%=link_to "New Recepi" , new_recepi_path %>
+            <%=link_to "New Recipe" , new_recepi_path %>
           </div>
         <% else %>
           <div class="choco shadows">
             <%= link_to 'Account','/customers/sign_up ' %>
           </div>
         <% end %>
+
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
+
         <% if customer_signed_in? %>
           <div class="choco shadows">
             <%= link_to 'Log out', destroy_customer_session_path, method: :delete %>
           </div>
         <% else %>
+
           <div class="choco shadows"></div>
         <% end %>
       </div>

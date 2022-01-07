@@ -1,18 +1,76 @@
-<h1>My Page</h1>
+<%= stylesheet_link_tag 'customers', media: 'all'%>
 
-<li>
-  <%= link_to "Data", customer_path(@customer) %>
-</li>
-<li>
-  <%= link_to "レシピ", recepis_path %>
-</li>
-<li>
-  <%= link_to "お気に入り", "#" %>
-</li>
-<li>
-  <%= link_to "編集", edit_customer_path(@customer) %>
-</li>
-
-<li>
-  <%= link_to "TOP", root_path %>
-</li>
+  <div class="container">
+    <div class="card">
+      <div class="imgBx">
+        <img src="#">
+      </div>
+      <div class="contentBx">
+        <div class="content">
+          <h3>
+            <%= link_to "My Data", customer_path(@customer) %>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="imgBx">
+        <img src="#">
+      </div>
+      <div class="contentBx">
+        <div class="content">
+          <h3>
+            <%= link_to "My Recipes", recepis_path %>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="imgBx">
+        <img src="#">
+      </div>
+      <div class="contentBx">
+        <div class="content">
+          <h3>
+            <%= link_to "Favorite","#" %>
+            </h3>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="imgBx">
+        <img src="#">
+      </div>
+      <div class="contentBx">
+        <div class="content">
+          <h3>
+            <%= link_to "Recipes of others", recepis_path %>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="imgBx">
+        <img src="#">
+      </div>
+      <div class="contentBx">
+        <div class="content">
+          <h3>
+            <%= link_to "Edit", edit_customer_path(@customer) %>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="imgBx">
+        <img src="#">
+      </div>
+      <div class="contentBx">
+        <div class="content">
+          <h3>
+            <%= link_to "Ranking","#"%>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>

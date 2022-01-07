@@ -1,3 +1,104 @@
-// Place all the styles related to the customers controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body
+{
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background: #222;
+}
+
+.container
+{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1100px;
+}
+
+.container .card
+{
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 15px;
+  overflow: hidden;
+
+}
+
+.container .card .imgBx
+.container .card .contentBx
+{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+
+}
+
+.container .card .imgBx img
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  }
+
+.container .card .contentBx::before
+{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+  transform-origin: right;
+  transition-delay: 0.5s;
+}
+
+.container .card:hover .contentBx::before
+{
+  transform: scaleX(1);
+  transition: transform 0.5s ease-in-out;
+  transform-origin: left;
+  transition-delay: 0s;
+
+}
+
+.container .card .content
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .card .contentBx .content
+{
+position: absolute;
+padding: 20px;
+z-index: 1;
+transition: 0.5s;
+transform: translateX(-300px);
+transition-delay: 0s;
+
+}
+
+.container .card:hover .contentBx .content
+{
+  transform: translateX(0px);
+  transition-delay: 0.5s;
+}
+
+.container .card:hover .contentBx .content h3
+{
+  font-size: 3.8em;
+  letter-spacing: 1px;
+  word-break: break-word;
+}
