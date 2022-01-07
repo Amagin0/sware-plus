@@ -1,3 +1,13 @@
+body
+{
+  background: linear-gradient(135deg, #fdc8f4, #fdc8f4 50%, #4ac4ff 50%, #4ac4ff);
+}
+
+:root
+{
+  ---clr: #ebf5fc;
+}
+
 .box
 {
   position: relative;
@@ -14,7 +24,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #c9f17ffa;
 }
 
 .curved .shadow
@@ -22,7 +31,7 @@
   position: relative;
   width: 60vw;
   height: 50vh;
-  z-index: 2;
+  z-index: 3;
 }
 
 .curved .shadow h2
@@ -35,7 +44,7 @@
   font-size: 14vw;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  z-index: 3;
   border: 10px solid #fff;
 
 }
@@ -94,7 +103,7 @@
   transform: skewY(-7.5deg);
   filter: blur(15px);
   opacity: 0.5;
-  z-index: 1;
+  z-index: 2;
 }
 
 .curved .shadow::before
@@ -110,5 +119,39 @@
   transform: skewY(7.5deg);
   filter: blur(15px);
   opacity: 0.5;
-  z-index: 1;
+  z-index: 2;
+}
+
+.background
+{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.background .choco
+{
+  position: relative;
+  width: calc(150 / 1400 * 100vw) !important;
+  height: calc(100 / 1400 * 100vw);
+  margin: calc(25 / 1400 * 100vw);
+  background: var(---clr);
+  font-size: calc(20 / 1400 * 100vw);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  color: #333;
+
+}
+
+.shadows
+{
+  border: 10px solid var(---clr);
+  box-shadow: -10px -10px 10px rgba(255,255,255,0.2),
+              15px 15px 15px rgba(0,0,0,0.1),
+              inset -15px -10px 10px rgba(255,255,255,0.2),
+              inset 15px 15px 15px rgba(0,0,0,0.1);
 }

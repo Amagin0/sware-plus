@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag 'homes', media: 'all'%>
-  <!--<div class="container">-->
+
     <div class="box curved">
       <div class="shadow">
         <h2>SwAre+</h2>
@@ -7,28 +7,61 @@
         <h2>SwAre+</h2>
         <h2>SwAre+</h2>
       </div>
+      <div class="background">
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <% if customer_signed_in? %>
+          <div class="choco shadows">
+            <%= link_to 'Mypage', customers_path %>
+          </div>
+        <% else %>
+          <div class="choco shadows"></div>
+        <% end %>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+
+        <div class="choco shadows">
+            <%= link_to 'Recepis', recepis_path %>
+        </div>
+
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <% if customer_signed_in? %>
+          <div class="choco shadows">
+            <%=link_to "New Recepi" , new_recepi_path %>
+          </div>
+        <% else %>
+          <div class="choco shadows">
+            <%= link_to 'Account','/customers/sign_up ' %>
+          </div>
+        <% end %>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <div class="choco shadows"></div>
+        <% if customer_signed_in? %>
+          <div class="choco shadows">
+            <%= link_to 'Log out', destroy_customer_session_path, method: :delete %>
+          </div>
+        <% else %>
+          <div class="choco shadows"></div>
+        <% end %>
+      </div>
     </div>
-  <!--</div>-->
 
-<% if customer_signed_in? %>
-<li>
-  <%= link_to 'Mypage', customers_path %>
-</li>
-<li>
-  <%= link_to 'みんなのRecepis', recepis_path %>
-</li>
-<li>
-  <%=link_to "New Recepi" , new_recepi_path %>
-</li>
-<li>
-  <%= link_to 'Log out', destroy_customer_session_path, method: :delete %>
-</li>
-
-<% else %>
-<li>
-  <%= link_to 'みんなのRecepis', recepis_path %>
-</li>
-<li>
-  <%= link_to 'Account','/customers/sign_up ' %>
-</li>
-<% end %>
