@@ -1,0 +1,19 @@
+<div>
+  <% recepi.recepi_comments.each do |recepi_comment| %>
+    <% recepi_comment_customer = recepi_comment.customer %>
+    <tr>
+      <th>
+        <%#= link_to customer_path(recepi_comment_customer), class: "customer_#{recepi_comment_customer.id}" do %>
+        <%#= attachment_image_tag recepi_comment_customer, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
+        <%= recepi_comment_customer.name %>さん：
+        <%# end %>
+      </th>
+      <td><%= recepi_comment.comment %></td>
+    </tr>
+    <tr>
+      <% if current_customer == recepi_comment_customer %>
+        <td><%= link_to '削除', recepi_recepi_comment_path(recepi_comment.recepi_id, recepi_comment.id), class: 'btn-sm btn-outline-danger rounded-pill col-sm-2 text-center', method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</div>

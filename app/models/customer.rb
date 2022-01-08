@@ -5,10 +5,8 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :recepis, dependent: :destroy
+  has_many :recepi_comments, dependent: :destroy
 
   validates :name, presence: true
 
-  # def recepis
-  #   return Recepi.where(customer_id: self.id)
-  # end
 end

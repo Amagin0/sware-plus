@@ -1,0 +1,6 @@
+  <div class="card-footer">
+    <%= form_with(model:[recepi, recepi_comment]) do |f| %>
+      <%= f.text_area :comment, rows: "3", size: "55" %>
+      <%= f.submit "コメントする", class: "btn btn-outline-success rounded-pill" %>
+    <% end %>
+  </div>

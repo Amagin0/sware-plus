@@ -4,6 +4,11 @@
     <div class="card offset-2" style="max-width: 40rem;">
       <img class="card-img-top"><%= attachment_image_tag(@recepi, :recepi_image, :fill, 100, 100, format:'png', fallback: "no-image-icon.png") %></p>
       <div class="card-body">
+        <div class="card-title text-left">
+          <%= link_to "#" do %>
+            <p>コメント数：<%= @recepi.recepi_comments.count %>件</p>
+          <% end %>
+        </div>
         <h4 class="card-title text-center"><strong><%= @recepi.recepi_title %></strong></h4>
         <p class="card-text">
           <span class="mark text-left"><strong>材料</strong></span><br>
@@ -23,7 +28,6 @@
         </div>
   		  <div class="card-footer text-right">
   		    <div>
-
   		    </div>
     		  <div>
       		  <%= link_to customer_path(@recepi.customer) do %>
@@ -53,6 +57,13 @@
             </div>
           </div>
         <% end %>
+      </div>
+      <h2>＜みんなのコメント＞</h2>
+      <div id="recepi_comment_area">
+        <%= render 'recepi_comments/index', recepi: @recepi %>
+      </div>
+      <div>
+        <%= render 'recepi_comments/form', recepi: @recepi, recepi_comment: @recepi_comment %>
       </div>
     </div>
 <!--  </div>-->

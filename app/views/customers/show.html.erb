@@ -1,27 +1,28 @@
+<div class="offset-1">
 <h1><%= @customer.name %>さんのData</h1>
-
-    <table class="table table-borderless">
-      <tr>
-        <th>投稿数：</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th>お気に入り：</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th>フォロー：</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th>フォロワー：</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th>登録日：</th>
-        <td></td>
-      </tr>
-    </table>
+  <table class="table table-borderless col-sm-2">
+    <tr>
+      <th>投稿数：</th>
+      <td><%= @customer.recepis.count %>件</td>
+    </tr>
+    <tr>
+      <th>お気に入り：</th>
+      <td>件</td>
+    </tr>
+    <tr>
+      <th>フォロー：</th>
+      <td>人</td>
+    </tr>
+    <tr>
+      <th>フォロワー：</th>
+      <td>人</td>
+    </tr>
+    <tr>
+      <th>登録日：</th>
+      <td><%= @customer.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+  </table>
+</div>
 
 <li>
   <%= link_to "TOP", root_path %>

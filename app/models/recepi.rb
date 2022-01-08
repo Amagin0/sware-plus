@@ -1,6 +1,7 @@
 class Recepi < ApplicationRecord
   attachment :recepi_image
   belongs_to :customer
+  has_many :recepi_comments, dependent: :destroy
 
   validates :recepi_title, length: { maximum: 32 }
   validates :raty_taste, numericality: {

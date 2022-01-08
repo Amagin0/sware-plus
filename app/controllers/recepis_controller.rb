@@ -1,7 +1,6 @@
 class RecepisController < ApplicationController
   before_action :set_recepi, only: %i[show edit update destroy]
 
-
   def new
     @recepi = Recepi.new
   end
@@ -21,6 +20,7 @@ class RecepisController < ApplicationController
   end
 
   def show
+    @recepi_comment = RecepiComment.new
     # impressionist(@recepi, nil, unique: [:session_hash.to_s])
   end
 
