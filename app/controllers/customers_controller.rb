@@ -10,6 +10,8 @@ class CustomersController < ApplicationController
   end
 
   def my_recepi
+    @average_taste = @customer.recepis.average(:raty_taste).round(1)
+    @average_fun = @customer.recepis.average(:raty_fun).round(1)
   end
 
   def edit

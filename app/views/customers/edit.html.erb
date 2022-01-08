@@ -1,6 +1,11 @@
+
+ <div class="offset-1">
  <h2>会員情報編集</h2>
   <%= form_with model: @customer, local: true do |f| %>
-    <table class="table table-borderless">
+    <table class="table table-borderless offset-1 col-sm-5">
+      <tr>
+        <th></th>
+      </tr>
       <tr>
         <th><%= f.label :"氏名" %></th>
         <td><%= f.text_field :name, autofocus: true, size: "50" %></td>
@@ -9,12 +14,16 @@
         <th><%= f.label :"メールアドレス" %></th>
         <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50" %></td>
       </tr>
+      <tr>
+        <th></th>
+        <td>
+          <%= f.submit "編集内容を保存", class: "btn btn-success rounded-pill" %>
+          <%= link_to "退会する", "#" ,class: "btn btn-danger rounded-pill" %>
+        </td>
+      </tr>
     </table>
-    <div>
-      <%= f.submit "編集内容を保存", class: "btn btn-success rounded-pill" %>
-      <%= link_to "退会する", "#" ,class: "btn btn-danger rounded-pill" %>
-    </div>
   <% end %>
+</div>
 <li>
   <%= link_to "TOP", root_path %>
 </li>

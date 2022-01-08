@@ -14,6 +14,14 @@
         <div class="content">
           <p><%= recepi.recepi_title %></p>
           <%= link_to "Read More", recepi_path(recepi) %>
+          <p>美：
+            <%= image_tag asset_path("star-on.png", alt: "Star-on") %>
+            <%= @average_taste %>&emsp;
+            面：
+            <%= image_tag asset_path("star-on.png", alt: "Star-on") %>
+            <%= @average_fun %>
+          </p>
+
         </div>
       </div>
     </div>

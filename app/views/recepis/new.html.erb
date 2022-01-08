@@ -1,7 +1,11 @@
+<div class="offset-1">
 <h2>レシピ新規登録</h2>
 
-    <%= form_with model: @recepi, local: true do |f| %>
-  <table class="table table-borderless">
+  <%= form_with model: @recepi, local: true do |f| %>
+    <table class="table table-borderless col-sm-6">
+      <tr>
+        <th></th>
+      </tr>
       <tr>
         <th>タイトル</th>
         <td><%= f.text_field :recepi_title, autofocus: true, placeholder: "＜タイトルを入力してください(32文字以内)＞", size: "50" %></td>
@@ -20,10 +24,12 @@
       </tr>
       <tr>
         <th></th>
-        <td><%= f.submit "レシピ作成", class: "btn btn-secondary px-5 ml-3" %></td>
+        <td><%= f.submit "レシピ作成", class: "btn btn-primary rounded-pill px-5" %></td>
       </tr>
-  </table>
-    <% end %>
+    </table>
+  <% end %>
+</div>
 <li>
   <%= link_to "TOP", root_path %>
 </li>
+

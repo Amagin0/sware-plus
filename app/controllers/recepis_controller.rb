@@ -8,6 +8,16 @@ class RecepisController < ApplicationController
 
   def index
     @recepi = Recepi.all
+    # if @recepi.raty_taste.blank?
+    #   @average_taste = 0
+    # else
+      @average_taste = @recepi.average(:raty_taste).round(1)
+    #end
+    # if @recepi.raty_fun.blank?
+    #   @average_fun = 0
+    # else
+      @average_fun = @recepi.average(:raty_fun).round(1)
+    #end
   end
 
   def show
@@ -19,7 +29,7 @@ class RecepisController < ApplicationController
 
   def update
     if @recepi.update(recepi_params)
-      redirect_to recepi_path(@recepi), notice: "レシピを編集しました"
+      redirect_to recepi_path(@recepi), notice: "レシピを更新しました"
     end
   end
 
@@ -47,7 +57,8 @@ class RecepisController < ApplicationController
   end
 
   def recepi_params
-    params.require(:recepi).permit(:recepi_title, :recepi_describe, :recepi_body, :recepi_image)
+    params.require(:recepi).permit(:recepi_title, :recepi_describe, :recepi_body, :recepi_image, :raty_taste, :raty_fun)
   end
 
 end
+
