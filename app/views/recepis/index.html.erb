@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'recepis', media: 'all' %>
 
-<% @recepi.each do |recepi| %>
+<% @recepis.each do |recepi| %>
   <div class="container">
     <div class="card">
       <div class="face face1">
@@ -16,13 +16,21 @@
         <div class="content">
           <p><%= recepi.recepi_title %></p>
             <%= link_to "Read More", recepi_path(recepi) %>
-          <p>美：
-            <%= image_tag asset_path("star-on.png", alt: "Star-on") %>
-            <%= @average_taste %>&emsp;
-            面：
-            <%= image_tag asset_path("star-on.png", alt: "Star-on") %>
-            <%= @average_fun %>
-          </p>
+              <p><i class="fas fa-utensils"></i>：
+                <%= image_tag asset_path("star-on.png", alt: "Star-on") %>
+                <% if recepi.avg_taste.blank?%>
+                  Non&emsp;
+                <% else %>
+                  <%= recepi.avg_taste %>&emsp;
+                <% end %>
+                <i class="far fa-grin-stars"></i>：
+                <% if recepi.avg_fun.blank?%>
+                  Non&emsp;
+                <% else %>
+                <%= image_tag asset_path("star-on.png", alt: "Star-on") %>
+                  <%= recepi.avg_fun %>&emsp;
+                <% end %>
+              </p>
         </div>
       </div>
     </div>

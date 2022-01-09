@@ -1,30 +1,67 @@
 <div class="offset-1">
-<h2>レシピ新規登録</h2>
+<h2><strong><mark>レシピ新規登録</mark></strong></h2>
 
-  <%= form_with model: @recepi, local: true do |f| %>
+  <%= form_with(model: @recepi, local: true) do |f| %>
     <table class="table table-borderless col-sm-6">
       <tr>
         <th></th>
       </tr>
       <tr>
-        <th>タイトル</th>
-        <td><%= f.text_field :recepi_title, autofocus: true, placeholder: "＜タイトルを入力してください(32文字以内)＞", size: "50" %></td>
+        <td><strong>＜タイトル＞</strong></td>
       </tr>
+        <tr><td><%= f.text_field :recepi_title, autofocus: true, placeholder: "＜タイトルを入力してください(32文字以内)＞", size: "50" %></td></tr>
+
       <tr>
-        <th>材料</th>
-        <td><%= f.text_area :recepi_describe, autofocus: true, placeholder: "＜材料一覧(右下をドラッグするとテキストボックスを大きく出来ます)＞", size: "53" %></td>
+        <td><strong>＜材料＞</strong></td>
       </tr>
+
       <tr>
-        <th>作り方</th>
-        <td><%= f.text_area :recepi_body, autofocus: true, placeholder: "＜作り方(右下をドラッグするとテキストボックスを大きく出来ます＞", size: "53" %></td>
+          <%= f.fields_for :recepi_ingredients do |t| %>
+            <%= render "recepis/recepi_ingredient_fields", f: t %>
+          <% end %>
       </tr>
+
+        <tr class="recepi_ingredients"></tr>
+
+        <tr>
+          <th class="col-sm-6"></th>
+          <td class="links">
+            <%= link_to_add_association "＋", f, :recepi_ingredients, class: "btn btn-outline-success rounded-pill",
+              data: {
+              association_insertion_node: '.recepi_ingredients',
+              association_insertion_method: 'before'
+              } %>
+          </td>
+        </tr>
+
       <tr>
-        <th></th>
+        <td><strong>＜作り方＞</strong></td>
+      </tr>
+
+      <tr>
+        <%= f.fields_for :how_to_makes do |t| %>
+          <%= render "recepis/how_to_make_fields", f: t %>
+        <% end %>
+      </tr>
+
+      <tr class="how_to_makes"></tr>
+
+      <tr>
+        <th class="col-sm-6"></th>
+        <td class="links">
+          <%= link_to_add_association "＋", f, :how_to_makes, class: "btn btn-outline-success rounded-pill",
+            data: {
+            association_insertion_node: '.how_to_makes',
+            association_insertion_method: 'before'
+            } %>
+        </td>
+      </tr>
+
+      <tr>
         <td><%= f.attachment_field :recepi_image %></td>
       </tr>
       <tr>
-        <th></th>
-        <td><%= f.submit "レシピ作成", class: "btn btn-primary rounded-pill px-5" %></td>
+        <td><%= f.submit "レシピ作成", class: "btn btn-primary rounded-pill px-4" %></td>
       </tr>
     </table>
   <% end %>
@@ -32,4 +69,3 @@
 <li>
   <%= link_to "TOP", root_path %>
 </li>
-

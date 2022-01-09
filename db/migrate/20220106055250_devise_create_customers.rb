@@ -34,7 +34,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
       t.string :customer_image_id
-      t.integer :roll, default: 1
+      t.boolean :admin, default: false
       t.boolean :is_deleted, default: false
 
       t.timestamps null: false

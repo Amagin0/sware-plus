@@ -3,24 +3,19 @@ class RecepisController < ApplicationController
 
   def new
     @recepi = Recepi.new
+    @how_to_makes = @recepi.how_to_makes.build
+    @recepi_ingredients = @recepi.recepi_ingredients.build
   end
 
   def index
-    @recepi = Recepi.all
-    # if @recepi.raty_taste.blank?
-    #   @average_taste = 0
-    # else
-      @average_taste = @recepi.average(:raty_taste).round(1)
-    #end
-    # if @recepi.raty_fun.blank?
-    #   @average_fun = 0
-    # else
-      @average_fun = @recepi.average(:raty_fun).round(1)
-    #end
+    @recepis = Recepi.all
+
   end
 
   def show
     @recepi_comment = RecepiComment.new
+    @recepi_raty = RecepiRaty.new
+    @recepi_raty_count = RecepiRaty.where(recepi_id: params[:recepi_id]).where(customer_id: current_customer.id).count
     # impressionist(@recepi, nil, unique: [:session_hash.to_s])
   end
 
@@ -57,7 +52,9 @@ class RecepisController < ApplicationController
   end
 
   def recepi_params
-    params.require(:recepi).permit(:recepi_title, :recepi_describe, :recepi_body, :recepi_image, :raty_taste, :raty_fun)
+    params.require(:recepi).permit(:recepi_title, :recepi_image,
+                                  how_to_makes_attributes: [:id , :recepi_make, :_destroy],
+                                  recepi_ingredients_attributes: [:id, :ingredient, :_destroy])
   end
 
 end

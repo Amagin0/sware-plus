@@ -6,17 +6,23 @@
       <div class="card-body">
         <div class="card-title text-left">
           <%= link_to "#" do %>
-            <p>コメント数：<%= @recepi.recepi_comments.count %>件</p>
+            <p id="recepi_<%= @recepi.id %>">コメント数：<%= @recepi.recepi_comments.count %>件</p>
           <% end %>
         </div>
         <h4 class="card-title text-center"><strong><%= @recepi.recepi_title %></strong></h4>
         <p class="card-text">
           <span class="mark text-left"><strong>材料</strong></span><br>
-          <p class="text-center"><%= @recepi.recepi_describe %></p><br>
+          <% @recepi.recepi_ingredients.each do |recepi_ingredient|%>
+            <p class="text-center"><%= recepi_ingredient.ingredient %></p><br>
+          <% end %>
         </p>
         <p class="card-text">
           <span class="mark text-left"><strong>作り方</strong></span><br>
-          <p class="text-center"><%= @recepi.recepi_body %></p>
+          <% @recepi.how_to_makes.each do |how_to_make| %>
+            <p class="text-center">
+              <%= how_to_make.recepi_make %>
+            </p>
+          <% end %>
         </p>
       <!--<td>閲覧数：<%#= @recepi.impressionist_count(:filter => :session_hash) %></td>
       <td class="recepi-rate" data-score="<%#= @recepi.rate %>"></td>-->
@@ -36,22 +42,22 @@
             <% end %>
           </div>
         </div>
-        <%= form_with model: @recepi, local: true do |f| %>
+        <%= form_with model:[@recepi, @recepi_raty], url: recepi_recepi_raties_path(@recepi), local: true do |f| %>
           <div class="card-footer text-center">
-            <% if @recepi.raty_taste.blank? %>
+            <%# if @recepi_raty_count < 1 %>
               <div id="raty_taste_star_new">
-            <% else %>
+            <%# else %>
               <div id="raty_taste_star">
-            <% end %>
-                <%= f.label :美味しさ %>
+            <%# end %>
+              <%= f.label :美味しさ %>
               </div>
-            <% if @recepi.raty_fun.blank? %>
-            <div id="raty_fun_star_new">
-          <% else %>
-            <div id="raty_fun_star">
-          <% end %>
+            <%# if @recepi_raty.recepi_fun.blank? %>
+              <div id="raty_fun_star_new">
+            <%# else %>
+              <div id="raty_fun_star">
+            <%# end %>
               <%= f.label :面白さ %>
-            </div>
+              </div>
             <div class="text-center">
               <%= f.submit "評価する", class: "btn btn-outline-primary rounded-pill" %>
             </div>
@@ -60,7 +66,7 @@
       </div>
       <h2>＜みんなのコメント＞</h2>
       <div id="recepi_comment_area">
-        <%= render 'recepi_comments/index', recepi: @recepi %>
+        <%= render 'recepi_comments/index', recepi: @recepi%>
       </div>
       <div>
         <%= render 'recepi_comments/form', recepi: @recepi, recepi_comment: @recepi_comment %>
@@ -74,38 +80,40 @@
 
 <script>
   $('#raty_taste_star').raty({
+    readOnly: true
     starOff  : '<%= asset_path('star-off.png') %>',
     starOn   : '<%= asset_path('star-on.png') %>',
     starHalf : '<%= asset_path('star-half.png') %>',
-    scoreName: 'recepi[raty_taste]', // 登録するモデル名[カラム名]
+    scoreName: 'recepi_raty[recepi_taste]', // 登録するモデル名[カラム名]
     half     : true, // 星半分の評価を可能にするため
-    score    : '<%= @recepi.raty_taste %>',　// 前回評価した値を取ってくる
+    score    : '<%= 4 %>',　// 前回評価した値を取ってくる
     });
 
   $('#raty_taste_star_new').raty({
     starOff  : '<%= asset_path('star-off.png') %>',
     starOn   : '<%= asset_path('star-on.png') %>',
     starHalf : '<%= asset_path('star-half.png') %>',
-    scoreName: 'recepi[raty_taste]', // 登録するモデル名[カラム名]
+    scoreName: 'recepi_raty[recepi_taste]',
     half     : true, // 星半分の評価を可能にするため
-    score    : 1, // デフォルト値
+    score    : 0, // デフォルト値
     });
 
   $('#raty_fun_star').raty({
+    readOnly: true
     starOff  : '<%= asset_path('star-off.png') %>',
     starOn   : '<%= asset_path('star-on.png') %>',
     starHalf : '<%= asset_path('star-half.png') %>',
-    scoreName: 'recepi[raty_fun]', // 登録するモデル名[カラム名]
+    scoreName: 'recepi_raty[recepi_fun]',
     half     : true, // 星半分の評価を可能にするため
-    score    : '<%= @recepi.raty_fun %>',　// 前回評価した値を取ってくる
+    score    : '<%= 4 %>'<%#= @recepi_raty.recepi_fun %>,
     });
 
   $('#raty_fun_star_new').raty({
     starOff  : '<%= asset_path('star-off.png') %>',
     starOn   : '<%= asset_path('star-on.png') %>',
     starHalf : '<%= asset_path('star-half.png') %>',
-    scoreName: 'recepi[raty_fun]', // 登録するモデル名[カラム名]
-    half     : true, // 星半分の評価を可能にするため
-    score    : 1, // デフォルト値
+    scoreName: 'recepi_raty[recepi_fun]',
+    half     : true,
+    score    : 0,
     });
 </script>

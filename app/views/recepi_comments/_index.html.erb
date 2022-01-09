@@ -11,6 +11,10 @@
       <td><%= recepi_comment.comment %></td>
     </tr>
     <tr>
+      <% if current_customer.admin? %>
+        <td><%= link_to '削除', recepi_recepi_comment_path(recepi_comment.recepi_id, recepi_comment.id), class: 'btn-sm btn-outline-danger rounded-pill col-sm-2 text-center', method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %></td>
+      <% end %>
+
       <% if current_customer == recepi_comment_customer %>
         <td><%= link_to '削除', recepi_recepi_comment_path(recepi_comment.recepi_id, recepi_comment.id), class: 'btn-sm btn-outline-danger rounded-pill col-sm-2 text-center', method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %></td>
       <% end %>
