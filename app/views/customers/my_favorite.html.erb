@@ -1,0 +1,3 @@
+<% current_customer.favorites.each do |favorite| %>
+  <%= link_to favorite.recepi.recepi_title, recepi_path(favorite.recepi) %>
+<% end %>

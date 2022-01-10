@@ -1,6 +1,5 @@
 class RecepiRatiesController < ApplicationController
 
-
   def create
     @recepi = Recepi.find(params[:recepi_id])
     @recepi_raty = RecepiRaty.new(raty_params)
@@ -13,7 +12,6 @@ class RecepiRatiesController < ApplicationController
       render "recepis/show"
     end
   end
-
 
   private
   def raty_params

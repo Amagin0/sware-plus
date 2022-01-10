@@ -5,11 +5,11 @@ class RecepiRaty < ApplicationRecord
   validates :recepi_taste, numericality: {
     less_than_or_equal_to: 5,
     greater_than_or_equal_to: 0.5
-  }, allow_blank: true
+  }, presence: true
 
   validates :recepi_fun, numericality: {
     less_than_or_equal_to: 5,
     greater_than_or_equal_to: 0.5
-  }, allow_blank: true
+  }, presence: true
 
 end

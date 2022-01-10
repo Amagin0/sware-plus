@@ -7,6 +7,7 @@ class Customer < ApplicationRecord
   has_many :recepis, dependent: :destroy
   has_many :recepi_comments, dependent: :destroy
   has_many :recepi_raties, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   validates :name, presence: true
 

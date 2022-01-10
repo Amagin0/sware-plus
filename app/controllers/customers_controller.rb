@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :set_customer, only: %i[show my_recepi edit update]
+  before_action :set_customer, only: %i[show my_recepi my favorite edit update]
 
   def index
     @customer = Customer.all
@@ -10,10 +10,9 @@ class CustomersController < ApplicationController
   end
 
   def my_recepi
-    @average_taste = 0.5
-    # @average_taste = @customer.recepis.average(:raty_taste).round(1)
-    @average_fun = 0.5
-    # @average_fun = @customer.recepis.average(:raty_fun).round(1)
+  end
+
+  def my_favorite
   end
 
   def edit
