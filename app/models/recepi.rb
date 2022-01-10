@@ -11,7 +11,7 @@ class Recepi < ApplicationRecord
 
   def avg_taste
     unless self.recepi_raties.empty?
-      recepi_raties.average(:recepi_taste).round(1)
+      recepi_raties.average(:recepi_taste)
     else
       0
     end

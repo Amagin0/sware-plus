@@ -15,7 +15,7 @@ class RecepisController < ApplicationController
   def show
     @recepi_comment = RecepiComment.new
     @recepi_raty = RecepiRaty.new
-    @recepi_raty_count = RecepiRaty.where(recepi_id: params[:recepi_id]).where(customer_id: current_customer.id).count
+    # @recepi_raty_count = RecepiRaty.where(recepi_id: params[:recepi_id]).where(customer_id: current_customer.id).count
     # impressionist(@recepi, nil, unique: [:session_hash.to_s])
   end
 

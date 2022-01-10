@@ -1,92 +1,88 @@
 <h2>レシピ詳細</h2>
-<!--<div class="container">-->
-  <!--<div class="row">-->
-    <div class="card offset-2" style="max-width: 40rem;">
-      <img class="card-img-top"><%= attachment_image_tag(@recepi, :recepi_image, :fill, 100, 100, format:'png', fallback: "no-image-icon.png") %></p>
-      <div class="card-body">
-        <div class="card-title text-left">
-          <%= link_to "#" do %>
-            <p id="recepi_<%= @recepi.id %>">コメント数：<%= @recepi.recepi_comments.count %>件</p>
-          <% end %>
-        </div>
-        <h4 class="card-title text-center"><strong><%= @recepi.recepi_title %></strong></h4>
-        <p class="card-text">
-          <span class="mark text-left"><strong>材料</strong></span><br>
-          <% @recepi.recepi_ingredients.each do |recepi_ingredient|%>
-            <p class="text-center"><%= recepi_ingredient.ingredient %></p><br>
-          <% end %>
+
+<div class="card offset-2" style="max-width: 40rem;">
+  <img class="card-img-top"><%= attachment_image_tag(@recepi, :recepi_image, :fill, 100, 100, format:'png', fallback: "no-image-icon.png") %></p>
+  <div class="card-body">
+    <div class="card-title text-left">
+      <%= link_to "#" do %>
+        <p id="recepi_<%= @recepi.id %>">コメント数：<%= @recepi.recepi_comments.count %>件</p>
+      <% end %>
+    </div>
+    <h4 class="card-title text-center"><strong><%= @recepi.recepi_title %></strong></h4>
+    <p class="card-text">
+      <span class="mark text-left"><strong>材料</strong></span><br>
+      <% @recepi.recepi_ingredients.each do |recepi_ingredient| %>
+        <p class="text-center"><%= recepi_ingredient.ingredient %></p><br>
+      <% end %>
+    </p>
+    <p class="card-text">
+      <span class="mark text-left"><strong>作り方</strong></span><br>
+      <% @recepi.how_to_makes.each do |how_to_make| %>
+        <p class="text-center">
+          <%= how_to_make.recepi_make %>
         </p>
-        <p class="card-text">
-          <span class="mark text-left"><strong>作り方</strong></span><br>
-          <% @recepi.how_to_makes.each do |how_to_make| %>
-            <p class="text-center">
-              <%= how_to_make.recepi_make %>
-            </p>
-          <% end %>
-        </p>
-      <!--<td>閲覧数：<%#= @recepi.impressionist_count(:filter => :session_hash) %></td>
-      <td class="recepi-rate" data-score="<%#= @recepi.rate %>"></td>-->
-        <div class="card-text text-center">
-        <% if @recepi.customer == current_customer %>
-          <%= link_to "編集", edit_recepi_path(@recepi), class: "btn btn-outline-primary rounded-pill" %>&emsp;
-          <%= link_to '削除', recepi_path(@recepi), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger rounded-pill destroy_recepi_#{@recepi.id}"%>
+      <% end %>
+    </p>
+  <!--<td>閲覧数：<%#= @recepi.impressionist_count(:filter => :session_hash) %></td>
+  <td class="recepi-rate" data-score="<%#= @recepi.rate %>"></td>-->
+    <div class="card-text text-center">
+    <% if @recepi.customer == current_customer %>
+      <%= link_to "編集", edit_recepi_path(@recepi), class: "btn btn-outline-primary rounded-pill" %>&emsp;
+      <%= link_to '削除', recepi_path(@recepi), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger rounded-pill destroy_recepi_#{@recepi.id}" %>
+    <% end %>
+    </div>
+	  <div class="card-footer text-right">
+		  <div>
+  		  <%= link_to customer_path(@recepi.customer) do %>
+          <%#= attachment_image_tag(@recepi.customer, :customer_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
+          レシピ製作者：<%= @recepi.customer.name %>
         <% end %>
-        </div>
-  		  <div class="card-footer text-right">
-  		    <div>
-  		    </div>
-    		  <div>
-      		  <%= link_to customer_path(@recepi.customer) do %>
-              <%#= attachment_image_tag(@recepi.customer, :customer_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
-              レシピ製作者：<%= @recepi.customer.name %>
-            <% end %>
-          </div>
-        </div>
-        <%= form_with model:[@recepi, @recepi_raty], url: recepi_recepi_raties_path(@recepi), local: true do |f| %>
-          <div class="card-footer text-center">
-            <%# if @recepi_raty_count < 1 %>
-              <div id="raty_taste_star_new">
-            <%# else %>
-              <div id="raty_taste_star">
-            <%# end %>
-              <%= f.label :美味しさ %>
-              </div>
-            <%# if @recepi_raty.recepi_fun.blank? %>
-              <div id="raty_fun_star_new">
-            <%# else %>
-              <div id="raty_fun_star">
-            <%# end %>
-              <%= f.label :面白さ %>
-              </div>
-            <div class="text-center">
-              <%= f.submit "評価する", class: "btn btn-outline-primary rounded-pill" %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <h2>＜みんなのコメント＞</h2>
-      <div id="recepi_comment_area">
-        <%= render 'recepi_comments/index', recepi: @recepi%>
-      </div>
-      <div>
-        <%= render 'recepi_comments/form', recepi: @recepi, recepi_comment: @recepi_comment %>
       </div>
     </div>
-<!--  </div>-->
-<!--</div>-->
+    <%= form_with model:[@recepi, @recepi_raty], url: recepi_recepi_raties_path(@recepi), local: true do |f| %>
+      <div class="card-footer text-center">
+        <% if @recepi_raty.recepi_taste.blank? %>
+          <div id="raty_taste_star_new">
+        <% else %>
+          <div id="raty_taste_star">
+        <% end %>
+          <%= f.label :美味しさ %>
+          </div>
+        <%# if @recepi_raty_count < 1 %>
+        <% if @recepi_raty.recepi_fun.blank? %>
+          <div id="raty_fun_star_new">
+        <% else %>
+          <div id="raty_fun_star">
+        <% end %>
+          <%= f.label :面白さ %>
+          </div>
+        <div class="text-center">
+          <%= f.submit "評価する", class: "btn btn-outline-primary rounded-pill" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <h2>＜みんなのコメント＞</h2>
+  <div id="recepi_comment_area">
+    <%= render 'recepi_comments/index', recepi: @recepi%>
+  </div>
+  <div>
+    <%= render 'recepi_comments/form', recepi: @recepi, recepi_comment: @recepi_comment %>
+  </div>
+</div>
+
 <li>
   <%= link_to "TOP", root_path %>
 </li>
 
 <script>
   $('#raty_taste_star').raty({
-    readOnly: true
     starOff  : '<%= asset_path('star-off.png') %>',
     starOn   : '<%= asset_path('star-on.png') %>',
     starHalf : '<%= asset_path('star-half.png') %>',
     scoreName: 'recepi_raty[recepi_taste]', // 登録するモデル名[カラム名]
     half     : true, // 星半分の評価を可能にするため
-    score    : '<%= 4 %>',　// 前回評価した値を取ってくる
+    score    : <%= @recepi_raty.recepi_taste.to_i %>,　// 前回評価した値を取ってくる
     });
 
   $('#raty_taste_star_new').raty({
@@ -95,17 +91,16 @@
     starHalf : '<%= asset_path('star-half.png') %>',
     scoreName: 'recepi_raty[recepi_taste]',
     half     : true, // 星半分の評価を可能にするため
-    score    : 0, // デフォルト値
+    score    : 3, // デフォルト値
     });
 
   $('#raty_fun_star').raty({
-    readOnly: true
     starOff  : '<%= asset_path('star-off.png') %>',
     starOn   : '<%= asset_path('star-on.png') %>',
     starHalf : '<%= asset_path('star-half.png') %>',
     scoreName: 'recepi_raty[recepi_fun]',
     half     : true, // 星半分の評価を可能にするため
-    score    : '<%= 4 %>'<%#= @recepi_raty.recepi_fun %>,
+    score    : '<%= @recepi_raty.recepi_fun.to_i %>',
     });
 
   $('#raty_fun_star_new').raty({
@@ -113,7 +108,7 @@
     starOn   : '<%= asset_path('star-on.png') %>',
     starHalf : '<%= asset_path('star-half.png') %>',
     scoreName: 'recepi_raty[recepi_fun]',
-    half     : true,
-    score    : 0,
+    half     : true, // 星半分の評価を可能にするため
+    score    : 3,
     });
 </script>
