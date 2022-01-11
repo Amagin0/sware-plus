@@ -31,5 +31,4 @@ class Recepi < ApplicationRecord
     favorites.where(customer_id: customer.id).exists?
   end
 
-
 end

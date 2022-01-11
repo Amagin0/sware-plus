@@ -1,0 +1,43 @@
+<% if @customers.exists? %>
+  <table class="table offset-1 col-sm-6" >
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th colspan="5" ></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= attachment_image_tag(customer, :customer_image_id, :fill,size: "100x100", fallback: "no-image-icon.png") %></td>
+          <td>
+            <%= link_to recepi_path(customer) do %>
+              <%= customer.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to my_recepi_customer_path(customer) do %>
+              レシピ：<%= customer.recepis.count %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to customer_followings_path(customer) do %>
+              フォロー：<%= customer.followings.count %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to customer_followers_path(customer) do %>
+              フォロワー：<%= customer.followers.count %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="offset-1">ユーザーはいません</p>
+<% end %>

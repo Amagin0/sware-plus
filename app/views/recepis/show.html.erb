@@ -15,7 +15,6 @@
     </div>
     <h4 class="card-title text-center"><strong><%= @recepi.recepi_title %></strong></h4>
 
-
     <p class="card-text">
       <span class="mark text-left"><strong>材料</strong></span><br>
       <% @recepi.recepi_ingredients.each do |recepi_ingredient| %>
@@ -30,7 +29,6 @@
         </p>
       <% end %>
     </p>
-  <!--<td>閲覧数：<%#= @recepi.impressionist_count(:filter => :session_hash) %></td>-->
     <div class="card-text text-center">
     <% if @recepi.customer == current_customer || current_customer.admin? %>
       <%= link_to "編集", edit_recepi_path(@recepi), class: "btn btn-outline-primary rounded-pill" %>&emsp;
@@ -48,12 +46,14 @@
     </div>
 
     <% if RecepiRaty.exists?(customer_id: current_customer.id ,recepi_id: @recepi.id) %>
+    <!--コントローラーと同じ記述で場合分け。過去に評価したことがあるかを調べている-->
       <%= form_with model:[@recepi, @recepi_raty], url: recepi_recepi_raties_path(@recepi), local: true, method: :patch do |f| %>
         <div class="card-footer text-center">
           <%= f.label :美味しさ %>
           <div id="raty_taste_star" data-score="<%= @recepi_raty.recepi_taste %>"></div>
           <%= f.label :面白さ %>
           <div id="raty_fun_star" data-score="<%= @recepi_raty.recepi_fun %>"></div>
+            <!--data-scoreで前回値をもってきている-->
         </div>
         <div class="text-center">
         </div>
@@ -96,7 +96,6 @@
     starHalf : '<%= asset_path('star-half.png') %>',
     scoreName: 'recepi_raty[recepi_fun]',
     half     : true,
-    score    : '<%= @recepi_raty.recepi_taste.to_f %>',
     });
 
   $('#raty_taste_star_new').raty({
@@ -115,7 +114,6 @@
     starHalf : '<%= asset_path('star-half.png') %>',
     scoreName: 'recepi_raty[recepi_fun]',
     half     : true,
-    score    : '<%= @recepi_raty.recepi_fun.to_f %>',
     });
 
   $('#raty_fun_star_new').raty({

@@ -30,7 +30,7 @@
     <tr>
       <th>フォロワー：</th>
       <td>
-        <%= link_to customer_followings_path(@customer) do %>
+        <%= link_to customer_followers_path(@customer) do %>
           <%= @customer.followers.count %>人
         <% end %>
       </td>
@@ -41,6 +41,7 @@
     </tr>
   </table>
 </div>
+
 
 <li>
   <%= link_to "TOP", root_path %>

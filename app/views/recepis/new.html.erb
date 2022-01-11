@@ -33,8 +33,8 @@
           <td class="links">
             <%= link_to_add_association "＋", f, :recepi_ingredients, class: "btn btn-outline-success rounded-pill",
               data: {
-              association_insertion_node: '.recepi_ingredients',
-              association_insertion_method: 'before'
+              association_insertion_node: '.recepi_ingredients', # モデル名 材料をcocoonで増やす
+              association_insertion_method: 'before' # 追加するときどこに増やすかを指定
               } %>
           </td>
         </tr>
@@ -56,7 +56,7 @@
         <td class="links">
           <%= link_to_add_association "＋", f, :how_to_makes, class: "btn btn-outline-success rounded-pill",
             data: {
-            association_insertion_node: '.how_to_makes',
+            association_insertion_node: '.how_to_makes', # モデル名 作り方をcocoonで増やす
             association_insertion_method: 'before'
             } %>
         </td>
