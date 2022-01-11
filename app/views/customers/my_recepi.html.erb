@@ -1,9 +1,9 @@
 <%= stylesheet_link_tag 'recepis', media: 'all' %>
-<% @page_title = 'My Recipes' %>
+<% @page_title = @customer.name + "'s Recipes" %>
 
 
 <div class="chapter-name">
-  <h2><strong>My Recepis</strong></h2>
+  <h2><strong><%= @customer.name %>'s Recipes</strong></h2>
 </div>
 
 <% @customer.recepis.each do |recepi| %>

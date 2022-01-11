@@ -1,5 +1,6 @@
 class RecepisController < ApplicationController
   before_action :set_recepi, only: %i[show edit update destroy]
+  impressionist :action => [:show]
 
   def new
     @recepi = Recepi.new
@@ -14,13 +15,14 @@ class RecepisController < ApplicationController
 
   def show
     @recepi_comment = RecepiComment.new
+    @recepi_raties = RecepiRaty.all
+    impressionist(@recepi, nil, unique: [:session_hash.to_s])
+    
     if RecepiRaty.exists?(customer_id: current_customer.id ,recepi_id: @recepi.id)
       @recepi_raty = RecepiRaty.find_by(customer_id: current_customer.id ,recepi_id: @recepi.id)
     else
       @recepi_raty = RecepiRaty.new
     end
-    @recepi_raties = RecepiRaty.all
-    # impressionist(@recepi, nil, unique: [:session_hash.to_s])
   end
 
   def edit

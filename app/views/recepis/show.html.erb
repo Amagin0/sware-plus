@@ -2,18 +2,19 @@
 <% @page_title = @recepi.recepi_title %>
 
 <div class="card offset-2">
-  <img class="card-img-top"><%= attachment_image_tag(@recepi, :recepi_image, :fill, 100, 100, format:'png', fallback: "no-image-icon.png") %></p>
+  <img class="card-img-top"><%= attachment_image_tag(@recepi, :recepi_image, :fill, 100, 100, fallback: "default_product.png") %></p>
   <div class="card-body">
+    <div class="text-left favorite-btn_<%= @recepi.id %>">
+      <%= render "favorites/favorite-btn", recepi: @recepi %>
+    </div>
     <div class="card-title text-left" id="recepi_<%= @recepi.id %>">
+      閲覧数：<%= @recepi.impressionist_count(:filter => :session_hash) %>&emsp;
       <%= link_to "#" do %>
-        <p>コメント数：<%= @recepi.recepi_comments.count %>件</p>
+        コメント数：<%= @recepi.recepi_comments.count %>件
       <% end %>
     </div>
     <h4 class="card-title text-center"><strong><%= @recepi.recepi_title %></strong></h4>
 
-      <div class="text-right favorite-btn_<%= @recepi.id %>">
-        <%= render "favorites/favorite-btn", recepi: @recepi %>
-      </div>
 
     <p class="card-text">
       <span class="mark text-left"><strong>材料</strong></span><br>
@@ -37,20 +38,21 @@
     <% end %>
     </div>
 	  <div class="card-footer text-right">
-		  <div>
   		  <%= link_to customer_path(@recepi.customer) do %>
           <%#= attachment_image_tag(@recepi.customer, :customer_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
           レシピ製作者：<%= @recepi.customer.name %>
         <% end %>
-      </div>
+        <div id="follow_<%= @recepi.id %>">
+          <%= render "recepis/follow", customer: @recepi.customer %>
+        </div>
     </div>
 
     <% if RecepiRaty.exists?(customer_id: current_customer.id ,recepi_id: @recepi.id) %>
       <%= form_with model:[@recepi, @recepi_raty], url: recepi_recepi_raties_path(@recepi), local: true, method: :patch do |f| %>
         <div class="card-footer text-center">
-            <%= f.label :美味しさ %>
-            <div id="raty_taste_star" data-score="<%= @recepi_raty.recepi_taste %>"></div>
-            <%= f.label :面白さ %>
+          <%= f.label :美味しさ %>
+          <div id="raty_taste_star" data-score="<%= @recepi_raty.recepi_taste %>"></div>
+          <%= f.label :面白さ %>
           <div id="raty_fun_star" data-score="<%= @recepi_raty.recepi_fun %>"></div>
         </div>
         <div class="text-center">

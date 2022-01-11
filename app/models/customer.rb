@@ -3,6 +3,8 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+  is_impressionable counter_cache: true
 
   has_many :recepis, dependent: :destroy
   has_many :recepi_comments, dependent: :destroy
@@ -18,6 +20,21 @@ class Customer < ApplicationRecord
   # 自分がフォローしている人orフォローされている人の一覧を出す
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :followings, through: :active_relationships, source: :followed
+
+  # フォローした時の処理
+  def follow(customer_id)
+    active_relationships.create(followed_id: customer_id)
+  end
+
+  # フォローを外す時の処理
+  def unfollow(customer_id)
+    active_relationships.find_by(followed_id: customer_id).destroy
+  end
+
+  # フォローしているかの判定(しているならtrueが返る)
+  def following?(customer)
+    followings.include?(customer)
+  end
 
   validates :name, presence: true
 

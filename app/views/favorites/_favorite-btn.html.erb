@@ -1,11 +1,14 @@
-<% if recepi.favorited_by?(current_customer) %>
-  <%= link_to recepi_favorites_path(recepi), method: :delete, remote: true do %>
-  <i class="fas fa-heart" style="color: lightcoral;"></i>
-  <% end %>
+<div class="favorite-btn_style">
+  <h3>
+    <% if recepi.favorited_by?(current_customer) %>
+      <%= link_to recepi_favorites_path(recepi), method: :delete, remote: true do %>
+      <i class="fas fa-heart" style="color: lightcoral;"></i>
+      <% end %>
+    <% else %>
+      <%= link_to recepi_favorites_path(recepi), method: :post, remote: true do %>
+      <i class="far fa-heart" style="color: lightcoral;"></i>
+      <% end %>
+    <% end %>
   お気に入り
-<% else %>
-  <%= link_to recepi_favorites_path(recepi), method: :post, remote: true do %>
-  <i class="far fa-heart" style="color: lightcoral;"></i>
-  <% end %>
-  お気に入り
-<% end %>
+  </h3>
+</div>

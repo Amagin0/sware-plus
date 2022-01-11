@@ -5,19 +5,35 @@
   <table class="table table-borderless col-sm-2">
     <tr>
       <th>投稿数：</th>
-      <td><%= @customer.recepis.count %>件</td>
+      <td>
+        <%= link_to my_recepi_customer_path(@customer) do %>
+          <%= @customer.recepis.count %>件
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th>お気に入り：</th>
-      <td>件</td>
+      <td>
+        <%= link_to my_favorite_customer_path(@customer) do %>
+          <%= @customer.favorites.count %>件
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th>フォロー：</th>
-      <td>人</td>
+      <td>
+        <%= link_to customer_followings_path(@customer) do %>
+          <%= @customer.followings.count %>人
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th>フォロワー：</th>
-      <td>人</td>
+      <td>
+        <%= link_to customer_followings_path(@customer) do %>
+          <%= @customer.followers.count %>人
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th>登録日：</th>

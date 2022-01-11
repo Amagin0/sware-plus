@@ -1,5 +1,6 @@
 class Recepi < ApplicationRecord
   attachment :recepi_image
+  is_impressionable
   belongs_to :customer
   has_many :recepi_comments, dependent: :destroy
   has_many :recepi_ingredients, dependent: :destroy
