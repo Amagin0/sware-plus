@@ -1,3 +1,14 @@
+<%= stylesheet_link_tag 'recepis', media: 'all' %>
+<% @page_title = 'My Favorite' %>
+
+<div class="chapter-name">
+  <h2><strong>My Favorites</strong></h2>
+</div>
+
 <% current_customer.favorites.each do |favorite| %>
-  <%= link_to favorite.recepi.recepi_title, recepi_path(favorite.recepi) %>
+  <%= render "layouts/recepi_index", recepi: favorite.recepi %>
 <% end %>
+
+<li>
+  <%= link_to "TOP", root_path %>
+</li>

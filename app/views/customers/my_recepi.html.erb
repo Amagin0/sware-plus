@@ -1,31 +1,15 @@
 <%= stylesheet_link_tag 'recepis', media: 'all' %>
+<% @page_title = 'My Recipes' %>
+
+
+<div class="chapter-name">
+  <h2><strong>My Recepis</strong></h2>
+</div>
 
 <% @customer.recepis.each do |recepi| %>
-  <div class="container">
-    <div class="card">
-      <div class="face face1">
-        <div class="content">
-          <div class="img">
-            <%= attachment_image_tag(recepi, :recepi_image, :fill, 100, 100, format:'png', fallback: "no-image-icon.png") %>
-          </div>
-        </div>
-      </div>
-      <div class="face face2">
-        <div class="content">
-          <p><%= recepi.recepi_title %></p>
-          <%= link_to "Read More", recepi_path(recepi) %>
-          <p>美：
-            <%= image_tag asset_path("star-on.png", alt: "Star-on") %>
-            <%= recepi.avg_taste %>&emsp;
-            面：
-            <%= image_tag asset_path("star-on.png", alt: "Star-on") %>
-              <%= recepi.avg_fun %>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render "layouts/recepi_index", recepi: recepi %>
 <% end %>
+
 <li>
   <%= link_to "TOP", root_path %>
 </li>

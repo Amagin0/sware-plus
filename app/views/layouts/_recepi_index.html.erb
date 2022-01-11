@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="card">
+    <div class="face face1">
+      <div class="content">
+        <div class="img">
+          <%= link_to recepi_path(recepi) do %>
+            <%= attachment_image_tag(recepi, :recepi_image, :fill, 100, 100, format:'png', fallback: "no-image-icon.png") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="face face2">
+      <div class="content">
+        <p><%= recepi.recepi_title %></p>
+        <%= link_to "Read More", recepi_path(recepi) %>
+        <p>
+          <i class="fas fa-utensils"></i>：
+          <%= image_tag asset_path("star-on.png", alt: "Star-on") %>
+          <%= recepi.avg_taste %>&emsp;
+          <i class="far fa-grin-stars"></i>：
+          <%= image_tag asset_path("star-on.png", alt: "Star-on") %>
+          <%= recepi.avg_fun %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

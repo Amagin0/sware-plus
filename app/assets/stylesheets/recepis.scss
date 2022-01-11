@@ -3,13 +3,47 @@ body
   margin: 0;
   padding: 0;
   max-height: 100vh;
-  background: #ebf5fc;
+  background-color: #ebf5fc;
+  background-image: image-url("brushed-alum.png");
   display: flex;
   flex-wrap: wrap;
   // justify-content: center;
   // align-items: center;
 }
 
+//--------タグ風見出し-----------
+.chapter-name
+{
+  width: 100vw;
+  margin-top: (30 / 1400 * 100vw);;
+  margin-left: (50 / 1400 * 100vw);;
+}
+
+h2
+{
+  position: relative;
+  display: block;
+  padding: 1rem 2rem 1rem 4rem;
+  color: #fff;
+  border-radius: 100vh 0 0 100vh;
+  background: #fa4141;
+  width: 15vw;
+  font-size: calc(17 / 1400 * 100vw);
+}
+
+h2:before {
+  position: absolute;
+  top: calc(50% - 7px);
+  left: calc(10 / 1400 * 100vw);
+  width: calc(15 / 1400 * 100vw);
+  height: calc(13 / 1400 * 100vw);
+  content: '';
+  border-radius: 50%;
+  background: #fff;
+}
+
+
+//--------カード型表示-----------
 .container
 {
   width: 20vw;

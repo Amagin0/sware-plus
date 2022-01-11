@@ -1,9 +1,8 @@
 class CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :set_customer, only: %i[show my_recepi my favorite edit update]
+  before_action :set_customer, only: %i[show my_recepi my_favorite edit update]
 
   def index
-    @customer = Customer.all
   end
 
   def show
@@ -33,7 +32,6 @@ class CustomersController < ApplicationController
   end
 
   def set_customer
-    # @customer = Customer.find(params[:id])
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
   end
 end

@@ -1,0 +1,75 @@
+  <div class="container">
+    <div class="card">
+      <div class="imgBx">
+        <%= image_tag asset_path("data.jpg", alt: "MyData") %>
+      </div>
+      <div class="contentBx">
+        <div class="content">
+          <h3>
+            <%= link_to "My Data", customer_path(current_customer.id) %>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="imgBx">
+        <%= image_tag asset_path("my_recipe.jpg", alt: "MyRecipe") %>
+      </div>
+      <div class="contentBx">
+        <div class="content">
+          <h3>
+            <%= link_to "My Recipes", my_recepi_customer_path(current_customer.id) %>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="imgBx">
+        <%= image_tag asset_path("favorite.jpg", alt: "Favorite") %>
+      </div>
+      <div class="contentBx">
+        <div class="content">
+          <h3>
+            <%= link_to "Favorite", my_favorite_customer_path(current_customer.id) %>
+            </h3>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="imgBx">
+        <%= image_tag asset_path("recipes_of_others.jpg", alt: "recipes_of_others") %>
+      </div>
+      <div class="contentBx">
+        <div class="content">
+          <h3>
+            <%= link_to "Recipes", recepis_path %>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="imgBx">
+        <%= image_tag asset_path("edit.jpg", alt: "Edit") %>
+      </div>
+      <div class="contentBx">
+        <div class="content">
+          <h3>
+            <%= link_to "Edit", edit_customer_path(current_customer.id) %>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="imgBx">
+        <%= image_tag asset_path("ranking.jpg", alt: "Ranking") %>
+      </div>
+      <div class="contentBx">
+        <div class="content">
+          <h3>
+            <%= link_to "Ranking","#"%>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+

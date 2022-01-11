@@ -1,0 +1,77 @@
+body
+{
+  margin: 0;
+  margin-top: 5vh;
+  padding: 0;
+  max-height: 100vh;
+  background-color: #ebf5fc;
+  background-image: image-url("brushed-alum.png");
+  display: flex;
+  flex-wrap: wrap;
+  // justify-content: center;
+  // align-items: center;
+}
+
+a
+{
+  color: #333;
+}
+
+.card
+{
+  background-color: #ffab61;
+  background-image: image-url("cross-scratches.png");
+  width: 45vw;
+}
+
+.card h4{
+  position: relative;
+  padding: 1.5rem 1.5rem calc(1.5rem + 10px);
+  border: 2px solid #000;
+}
+
+.card h4:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  content: '';
+  border-top: 2px solid #000;
+  background-image: -webkit-repeating-linear-gradient(135deg, #000, #000 1px, transparent 2px, transparent 5px);
+  background-image: repeating-linear-gradient(-45deg, #000, #000 1px, transparent 2px, transparent 5px);
+  background-size: 7px 7px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.post-it-thin
+{
+  width: 25rem;
+  height: 4rem;
+  padding: 1em 1em;
+  margin-bottom: 0;
+  overflow: hidden;
+  box-shadow: .25rem 0 .25rem hsla(0, 0%, 0%, .1);
+  background-image:
+    linear-gradient(90deg, hsla(0, 0%, 45%, .1) 2rem, hsla(0, 100%, 100%, 0) 2.5rem)
+  , linear-gradient(90deg, hsla(60, 100%, 85%, 1), hsla(60, 100%, 85%, 1));
+  font-size: 1.125rem;
+  line-height: 1.8;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.post-it-thick
+{
+  width: 25rem;
+  height: 20rem;
+  padding: 1.5em;
+  overflow: hidden;
+  box-shadow: 0 .25rem .25rem hsla(0, 0%, 0%, .1);
+  background-image:
+    linear-gradient(180deg, hsla(0, 0%, 45%, .1) 2rem, hsla(0, 100%, 100%, 0) 2.5rem)
+  , linear-gradient(180deg, hsla(200, 100%, 85%, 1), hsla(200, 100%, 85%, 1));
+  font-size: 1.125rem;
+  line-height: 1.8;
+}

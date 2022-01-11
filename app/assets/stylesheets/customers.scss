@@ -7,6 +7,11 @@ min-height: 100vh;
 background: #222;
 }
 
+a
+{
+  color: #333;
+}
+
 .container
 {
   position: relative;
@@ -101,4 +106,9 @@ transition-delay: 0s;
   font-size: 3.8em;
   letter-spacing: 1px;
   word-break: break-word;
+}
+
+.chapter-name
+{
+  width: 100vw;
 }
