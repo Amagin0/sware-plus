@@ -3,6 +3,7 @@
 
 <div class="chapter-name">
   <h2><strong>Recipes</strong></h2>
+  <%= link_to "新しい順", recepis_path(sort_update: "true") %> | <%= link_to "美味しい順", recepis_path(sort_top_rate_taste: "true") %> | <%= link_to "面白い順", recepis_path(sort_top_rate_fun: "true") %>
 </div>
 
 <% @recepis.each do |recepi| %>

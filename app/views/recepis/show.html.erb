@@ -9,7 +9,7 @@
     </div>
     <div class="card-title text-left" id="recepi_<%= @recepi.id %>">
       閲覧数：<%= @recepi.impressionist_count(:filter => :session_hash) %>&emsp;
-      <%= link_to "#" do %>
+      <%= link_to "#recepi_comment_area" do %>
         コメント数：<%= @recepi.recepi_comments.count %>件
       <% end %>
     </div>
@@ -40,7 +40,7 @@
           <%#= attachment_image_tag(@recepi.customer, :customer_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
           レシピ製作者：<%= @recepi.customer.name %>
         <% end %>
-        <div id="follow_<%= @recepi.id %>">
+        <div id="follow">
           <%= render "recepis/follow", customer: @recepi.customer %>
         </div>
     </div>
