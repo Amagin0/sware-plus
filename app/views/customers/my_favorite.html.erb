@@ -1,15 +1,11 @@
 <%= stylesheet_link_tag 'recepis', media: 'all' %>
-<% @page_title = 'My Favorite' %>
+<% @page_title = @customer.name + "'s Favorite" %>
 
 <div class="chapter-name">
   <h2><strong><%= @customer.name %> Favorites</strong></h2>
 </div>
-<div>
-  <%= link_to "新しい順", my_favorite_customer_path(sort_update: "true") %>  <%= link_to "美味しい順", my_favorite_customer_path(sort_top_rate_taste: "true") %>  <%= link_to "面白い順", my_favorite_customer_path(sort_top_rate_fun: "true") %>
-  <%#= link_to "新しい順", my_favorite_customer_path(sort_update: "true") %>  <%#= link_to "美味しい順", my_favorite_customer_path(sort_top_rate_taste: "true") %>  <%#= link_to "面白い順", my_favorite_customer_path(sort_top_rate_fun: "true") %>
-</div>
 
-<% current_customer.favorites.each do |favorite| %>
+<% @customer.favorites.each do |favorite| %>
   <%= render "layouts/recepi_index", recepi: favorite.recepi %>
 <% end %>
 

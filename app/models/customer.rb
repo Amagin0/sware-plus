@@ -21,10 +21,9 @@ class Customer < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :followings, through: :active_relationships, source: :followed
 
-
   scope :latest, -> { order(updated_at: :desc)}
   scope :raties, -> { Recepi.left_joins(:recepi_raties) }
-  scope :top_rate_taste, -> { raties.order(recepi_taste: :desc).distinct}
+  scope :top_rate_taste, -> { raties.order(recepi_taste: :desc).distinct }
   scope :top_rate_fun, -> { raties.order(recepi_fun: :desc).distinct }
 
   # フォローした時の処理
@@ -43,5 +42,4 @@ class Customer < ApplicationRecord
   end
 
   validates :name, presence: true
-
 end

@@ -40,7 +40,7 @@
           <%#= attachment_image_tag(@recepi.customer, :customer_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
           レシピ製作者：<%= @recepi.customer.name %>
         <% end %>
-        <div id="follow">
+        <div id="follow_<%= @recepi.customer.id %>">
           <%= render "recepis/follow", customer: @recepi.customer %>
         </div>
     </div>

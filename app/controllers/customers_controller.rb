@@ -2,7 +2,6 @@ class CustomersController < ApplicationController
   before_action :authenticate_customer!
   before_action :set_customer, only: %i[show my_recepi my_favorite edit update]
 
-
   def index
   end
 
@@ -11,35 +10,17 @@ class CustomersController < ApplicationController
 
   def my_recepi
     if params[:sort_update]
-      @customers = Recepi.latest # 新規順に使用
+      @sorted_recepis = Recepi.latest.where(customer_id: @customer.id) # 新規順に使用
     elsif params[:sort_top_rate_taste]
-      @customers = Recepi.top_rate_taste # 美味しい評価が高い順に使用
+      @sorted_recepis = Recepi.top_rate_taste.where(customer_id: @customer.id) # 美味しい評価が高い順に使用
     elsif params[:sort_top_rate_fun]
-      @customers = Recepi.top_rate_fun # 面白い評価が高い順に使用
+      @sorted_recepis = Recepi.top_rate_fun.where(customer_id: @customer.id) # 面白い評価が高い順に使用
     else
-      @customers = Recepi.all
+      @sorted_recepis = @customer.recepis
     end
   end
 
   def my_favorite
-    # if params[:sort_update]
-    #   @customers = Customer.latest
-    # elsif params[:sort_top_rate_taste]
-    #   @customers = Customer.top_rate_taste
-    # elsif params[:sort_top_rate_fun]
-    #   @customers = Customer.top_rate_fun
-    # else
-    #   @customers = Customer.all
-    # end
-    if params[:sort_update]
-      @customers = Recepi.latest # 新規順に使用
-    elsif params[:sort_top_rate_taste]
-      @customers = Recepi.top_rate_taste # 美味しい評価が高い順に使用
-    elsif params[:sort_top_rate_fun]
-      @customers = Recepi.top_rate_fun # 面白い評価が高い順に使用
-    else
-      @customers = Recepi.all
-    end
   end
 
   def edit

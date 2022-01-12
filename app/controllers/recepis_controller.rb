@@ -41,7 +41,6 @@ class RecepisController < ApplicationController
     end
   end
 
-
   def create
     @recepi = Recepi.new(recepi_params)
     @recepi.customer_id = current_customer.id

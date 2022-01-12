@@ -16,6 +16,7 @@ class Recepi < ApplicationRecord
   scope :top_rate_taste, -> { raties.order(recepi_taste: :desc).distinct }
   scope :top_rate_fun, -> { raties.order(recepi_fun: :desc).distinct }
 
+
   def avg_taste
     unless self.recepi_raties.empty?
       recepi_raties.average(:recepi_taste).round(1)
