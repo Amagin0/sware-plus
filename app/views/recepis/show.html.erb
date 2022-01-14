@@ -38,7 +38,6 @@
       <% end %>
     </p>
 
-
   <div class="card-text text-center">
     <% if @recepi.customer == current_customer || current_customer.admin? %>
     <%= link_to "編集", edit_recepi_path(@recepi), class: "btn btn-outline-primary rounded-pill" %>&emsp;
