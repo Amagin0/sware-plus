@@ -1,0 +1,13 @@
+<table class="table offset-2 col-sm-5">
+  <% if current_customer.admin? %>
+    <%= form_with model: @genre do |f| %>
+      <td>
+        <%= f.text_field :genre_name %>
+        <%= f.submit class: "btn btn-success rounded-pill" %>
+      </td>
+    <% end %>
+  <% end %>
+</table>
+<div id="create">
+  <%= render 'genres/genre_index', genres: @genres %>
+</div>

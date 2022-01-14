@@ -14,13 +14,19 @@
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
-        <div class="choco shadows"></div>
+        <% if customer_signed_in? && current_customer.admin? %>
+          <div class="choco shadows">
+            <%= link_to 'Genres', genres_path %>
+          </div>
+        <% else %>
+          <div class="choco shadows"></div>
+        <% end %>
+
         <div class="choco shadows">Arrange</div>
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
         <div class="choco shadows"></div>
-
         <% if customer_signed_in? %>
           <div class="choco shadows">
             <%= link_to 'Mypage', customers_path %>

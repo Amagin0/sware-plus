@@ -19,15 +19,12 @@
       <tr>
         <td><strong>＜材料＞</strong></td>
       </tr>
-
       <tr>
-          <%= f.fields_for :recepi_ingredients do |t| %>
-            <%= render "recepis/recepi_ingredient_fields", f: t %>
-          <% end %>
+        <%= f.fields_for :recepi_ingredients do |t| %>
+          <%= render "recepis/recepi_ingredient_fields", f: t %>
+        <% end %>
       </tr>
-
         <tr class="recepi_ingredients"></tr>
-
         <tr>
           <th class="col-sm-6"></th>
           <td class="links">
@@ -42,21 +39,39 @@
       <tr>
         <td><strong>＜作り方＞</strong></td>
       </tr>
-
       <tr>
         <%= f.fields_for :how_to_makes do |t| %>
           <%= render "recepis/how_to_make_fields", f: t %>
         <% end %>
       </tr>
-
       <tr class="how_to_makes"></tr>
-
       <tr>
         <th class="col-sm-6"></th>
         <td class="links">
           <%= link_to_add_association "＋", f, :how_to_makes, class: "btn btn-outline-success rounded-pill",
             data: {
             association_insertion_node: '.how_to_makes', # モデル名 作り方をcocoonで増やす
+            association_insertion_method: 'before'
+            } %>
+        </td>
+      </tr>
+
+      <tr>
+        <td><strong>＜タグ＞</strong></td>
+      </tr>
+      <tr>
+        <%= f.fields_for :tags do |t| %>
+          <%= render "recepis/tag_fields", f: t %>
+        <% end %>
+      </tr>
+
+      <tr class="tags"></tr>
+      <tr>
+        <th class="col-sm-6"></th>
+        <td class="links">
+          <%= link_to_add_association "＋", f, :tags, class: "btn btn-outline-success rounded-pill",
+            data: {
+            association_insertion_node: '.tags', # モデル名 作り方をcocoonで増やす
             association_insertion_method: 'before'
             } %>
         </td>

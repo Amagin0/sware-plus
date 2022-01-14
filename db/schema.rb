@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_11_145447) do
+ActiveRecord::Schema.define(version: 2022_01_13_024524) do
 
   create_table "customers", force: :cascade do |t|
     t.string "name"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 2022_01_11_145447) do
   create_table "favorites", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "recepi_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "genre_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -106,6 +113,13 @@ ActiveRecord::Schema.define(version: 2022_01_11_145447) do
   create_table "relationships", force: :cascade do |t|
     t.integer "followed_id"
     t.integer "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.integer "recepi_id"
+    t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

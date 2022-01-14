@@ -1,0 +1,8 @@
+<table class="table offset-2 col-sm-5">
+  <% genres.each do |genre| %>
+    <tr>
+      <td><%= genre.genre_name %></td>
+      <td><%= link_to "削除", genre_path(genre), method: :delete, remote: true, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger rounded-pill" %></td>
+    </tr>
+  <% end %>
+</table>

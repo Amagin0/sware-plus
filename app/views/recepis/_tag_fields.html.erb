@@ -1,0 +1,8 @@
+<tr class="nested-fields">
+  <td>
+    <%= f.collection_select :genre_id, Genre.all, :id, :genre_name , :include_blank => "選択してください" %>
+  </td>
+  <td>
+    <%= link_to_remove_association "－", f, class: 'btn btn-outline-denger' %>
+  </td>
+</tr>

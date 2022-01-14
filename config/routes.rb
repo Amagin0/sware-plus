@@ -15,4 +15,5 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
   end
 
+  resources :genres, only: %i[index create destroy]
 end
