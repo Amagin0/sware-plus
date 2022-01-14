@@ -1,4 +1,4 @@
 class Tag < ApplicationRecord
-  belongs_to :recepi
   belongs_to :genre
+  belongs_to :recepi
 end

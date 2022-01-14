@@ -1,0 +1,8 @@
+<tr class="nested-fields">
+  <td>
+    <%= f.collection_select :genre_name, Genre.all, :id, :genre_name, prompt: "選択してください" %>
+  </td>
+  <td>
+    <%= link_to_remove_association "－", f, class: 'btn btn-outline-danger rounded-pill' %>
+  </td>
+</tr>

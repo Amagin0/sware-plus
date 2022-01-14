@@ -60,23 +60,21 @@
         <td><strong>＜タグ＞</strong></td>
       </tr>
       <tr>
-        <%= f.fields_for :tags do |t| %>
-          <%= render "recepis/tag_fields", f: t %>
+        <%= f.fields_for :genres do |t| %>
+          <%= render "recepis/genre_fields", f: t %>
         <% end %>
       </tr>
-
-      <tr class="tags"></tr>
-      <tr>
-        <th class="col-sm-6"></th>
-        <td class="links">
-          <%= link_to_add_association "＋", f, :tags, class: "btn btn-outline-success rounded-pill",
-            data: {
-            association_insertion_node: '.tags', # モデル名 作り方をcocoonで増やす
-            association_insertion_method: 'before'
-            } %>
-        </td>
-      </tr>
-
+      <tr class="genres"></tr>
+        <tr>
+          <th class="col-sm-6"></th>
+          <td class="links">
+            <%= link_to_add_association "＋", f, :genres, class: "btn btn-outline-success rounded-pill",
+              data: {
+              association_insertion_node: '.genres', # モデル名 作り方をcocoonで増やす
+              association_insertion_method: 'before'
+              } %>
+          </td>
+        </tr>
       <tr>
         <td><%= f.attachment_field :recepi_image %></td>
       </tr>

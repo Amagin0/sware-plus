@@ -6,8 +6,7 @@ class RecepisController < ApplicationController
     @recepi = Recepi.new
     @how_to_makes = @recepi.how_to_makes.build # cocoon子要素　作り方
     @recepi_ingredients = @recepi.recepi_ingredients.build # cocoon子要素　材料
-    @tags = @recepi.tags.build # cocoon子要素(中間テーブル)
-    @genres = @tags.genres.build # cocoon孫要素　ジャンル
+    @genres = @recepi.genres.build # cocoon子要素(中間テーブル)
   end
 
   def index
