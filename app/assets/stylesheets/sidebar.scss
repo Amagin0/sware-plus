@@ -1,0 +1,301 @@
+:root{
+    /* ===== Colors ===== */
+    --body-color: #ebf5fc;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+body{
+    min-height: 100vh;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+    background-image: image-url("brushed-alum.png");
+}
+
+::selection{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+body.dark{
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+}
+
+/* ===== Sidebar ===== */
+ .sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: calc(200 / 1400 * 100vw);
+    padding: calc(10 14 / 1400 * 100vw);
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;
+}
+.sidebar.close{
+    width: calc(88 / 1400 * 100vw);
+}
+
+/* ===== Reusable code - Here ===== */
+.sidebar li{
+    height: calc(50 / 1400 * 100vw);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebar header .image,
+.sidebar i{
+    min-width: calc(60 / 1400 * 100vw);
+    border-radius: (6 / 1400 * 100vw);
+}
+
+.sidebar i{
+    min-width: calc(60 / 1400 * 100vw);
+    border-radius: calc(6 / 1400 * 100vw);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(20 / 1400 * 100vw);
+}
+
+.sidebar .text,
+.sidebar i{
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.sidebar .text{
+    font-size: calc(15 / 1400 * 100vw);
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+.sidebar.close .text{
+    opacity: 0;
+}
+/* =========================== */
+
+.sidebar header{
+    position: relative;
+}
+
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+}
+.sidebar header .logo-text{
+    display: flex;
+    flex-direction: column;
+}
+header .image-text .name {
+    margin-top: calc(2 / 1400 * 100vw);
+    font-size: calc(18 / 1400 * 100vw);
+    font-weight: 600;
+}
+
+header .image-text .profession{
+    font-size: calc(16 / 1400 * 100vw);
+    margin-top: calc(-2 / 1400 * 100vw);
+    display: block;
+}
+
+.sidebar header .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar header .image img{
+    width: calc(40 / 1400 * 100vw);
+    border-radius: calc(6 / 1400 * 100vw);
+}
+
+.sidebar header .toggle{
+    position: absolute;
+    top: 50%;
+    right: calc(-25 / 1400 * 100vw);
+    transform: translateY(-50%) rotate(180deg);
+    height: calc(25 / 1400 * 100vw);
+    width: calc(25 / 1400 * 100vw);
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(22 / 1400 * 100vw);
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+body.dark .sidebar header .toggle{
+    color: var(--text-color);
+}
+
+.sidebar.close .toggle{
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.sidebar .menu{
+    margin-top: calc(40 / 1400 * 100vw);
+}
+
+.sidebar li.search-box{
+    border-radius: calc(6 / 1400 * 100vw);
+    background-color: var(--primary-color-light);
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+.sidebar li.search-box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    border-radius: calc(6 / 1400 * 100vw);
+    font-size: calc(17 / 1400 * 100vw);
+    font-weight: 500;
+    transition: var(--tran-05);
+}
+.sidebar li a{
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: calc(6 / 1400 * 100vw);
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+.sidebar li a:hover{
+    background-color: var(--primary-color);
+}
+.sidebar li a:hover i,
+.sidebar li a:hover .text{
+    color: var(--sidebar-color);
+}
+body.dark .sidebar li a:hover i,
+body.dark .sidebar li a:hover .text{
+    color: var(--text-color);
+}
+
+.sidebar .menu-bar{
+    height: calc(100% - 55px/ 1400 * 100vw);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+.menu-bar::-webkit-scrollbar{
+    display: none;
+}
+.sidebar .menu-bar .mode{
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    position: relative;
+    transition: var(--tran-05);
+}
+
+.menu-bar .mode .sun-moon{
+    height: calc(50 / 1400 * 100vw);
+    width: calc(60 / 1400 * 100vw);
+}
+
+.mode .sun-moon i{
+    position: absolute;
+}
+.mode .sun-moon i.sun{
+    opacity: 0;
+}
+body.dark .mode .sun-moon i.sun{
+    opacity: 1;
+}
+body.dark .mode .sun-moon i.moon{
+    opacity: 0;
+}
+
+.menu-bar .bottom-content .toggle-switch{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    min-width: calc(60 / 1400 * 100vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: calc(6 / 1400 * 100vw);
+    cursor: pointer;
+}
+.toggle-switch .switch{
+    position: relative;
+    height: calc(22 / 1400 * 100vw);
+    width: calc(40 / 1400 * 100vw);
+    border-radius: calc(25 / 1400 * 100vw);
+    background-color: var(--toggle-color);
+    transition: var(--tran-05);
+}
+
+.switch::before{
+    content: '';
+    position: absolute;
+    height: calc(15 / 1400 * 100vw);
+    width: calc(15 / 1400 * 100vw);
+    border-radius: 50%;
+    top: 50%;
+    left: calc(5 / 1400 * 100vw);
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+
+body.dark .switch::before{
+    left: calc(20 / 1400 * 100vw);
+}
+
+.home{
+    position: absolute;
+    top: 0;
+    top: 0;
+    left: calc(250 / 1400 * 100vw);
+    height: 100vh;
+    width: calc(100% - 250px/ 1400 * 100vw);
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+.home .text{
+    font-size: calc(30 / 1400 * 100vw);
+    font-weight: 500;
+    color: var(--text-color);
+    padding: calc(12 60 / 1400 * 100vw);
+}
+
+.sidebar.close ~ .home{
+    left: calc(78 / 1400 * 100vw);
+    height: 100vh;
+    width: calc(100% - 78px/ 1400 * 100vw);
+}
+body.dark .home .text{
+    color: var(--text-color);
+}

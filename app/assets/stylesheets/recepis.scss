@@ -7,16 +7,14 @@ body
   background-image: image-url("brushed-alum.png");
   display: flex;
   flex-wrap: wrap;
-  // justify-content: center;
-  // align-items: center;
 }
 
 //--------タグ風見出し-----------
 .chapter-name
 {
   width: 100vw;
-  margin-top: (30 / 1400 * 100vw);;
-  margin-left: (50 / 1400 * 100vw);;
+  margin-top: calc(30 / 1400 * 100vw);
+  margin-left: calc(50 / 1400 * 100vw);
 }
 
 h2
@@ -49,7 +47,7 @@ h2:before {
   width: 20vw;
   height: 40vh;
   position: relative;
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
   margin-right: 0;
   margin-left: 0;

@@ -1,6 +1,8 @@
 <%= stylesheet_link_tag 'recepis_show', media: 'all' %>
 <% @page_title = @recepi.recepi_title %>
 
+<%= render "layouts/sidebar" %>
+
 <div class="card offset-2">
   <img class="card-img-top"><%= attachment_image_tag(@recepi, :recepi_image, :fill, 100, 100, fallback: "default_product.png") %></p>
   <div class="card-body">

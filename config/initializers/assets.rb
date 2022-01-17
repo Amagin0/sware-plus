@@ -17,5 +17,6 @@ Rails.application.config.assets.precompile += %w(
   signup.css
   recepis.css
   customers.css
-  recepis_show.scss
+  recepis_show.css
+  sidebar.css
  )
