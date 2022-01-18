@@ -6,10 +6,11 @@ class RecepisController < ApplicationController
     @recepi = Recepi.new
     @how_to_makes = @recepi.how_to_makes.build # cocoon子要素　作り方
     @recepi_ingredients = @recepi.recepi_ingredients.build # cocoon子要素　材料
-    @genres = @recepi.genres.build # cocoon子要素(中間テーブル)
+    @tags = @recepi.tags.build # cocoon子要素(中間テーブル)
   end
 
   def index
+    @title = "Recipes"
     if params[:sort_update]
       @recepis = Recepi.latest # 新規順に使用
     elsif params[:sort_top_rate_taste]
@@ -67,7 +68,6 @@ class RecepisController < ApplicationController
     params.require(:recepi).permit(:recepi_title, :recepi_image,
                                   how_to_makes_attributes: [:id , :recepi_make, :_destroy],
                                   recepi_ingredients_attributes: [:id, :ingredient, :_destroy],
-                                  tags_attributes: [:id, :_destroy,
-                                  genres_attributes: [:id, :genre_name, :_destroy]])
+                                  tags_attributes: [:id, :genre_id, :_destroy])
   end
 end

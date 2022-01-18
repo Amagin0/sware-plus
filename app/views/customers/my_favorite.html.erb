@@ -1,14 +1,17 @@
 <%= stylesheet_link_tag 'recepis', media: 'all' %>
 <% @page_title = @customer.name + " Favorites" %>
-
-<div class="chapter-name">
-  <h2><strong><%= @customer.name %> Favorites</strong></h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-1">
+      <%= render "layouts/sidebar" %>
+    </div>
+    <div class="col-sm-11">
+      <div class="chapter-name">
+        <h2><strong><%= @customer.name %> Favorites</strong></h2>
+      </div>
+      <% @customer.favorites.each do |favorite| %>
+        <%= render "layouts/recepi_index", recepi: favorite.recepi %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<% @customer.favorites.each do |favorite| %>
-  <%= render "layouts/recepi_index", recepi: favorite.recepi %>
-<% end %>
-
-<li>
-  <%= link_to "TOP", root_path %>
-</li>

@@ -11,114 +11,108 @@
         <span class="name">Sware+</span>
       </div>
     </div>
-
-    <i class='bx bx-chevron-right toggle'></i>
+    <i class='bx bxs-chevrons-right toggle'></i>
   </header>
 
   <div class="menu-bar">
     <div class="menu">
-
       <li class="search-box">
-        <i class='bx bx-search icon'></i>
-        <input type="text" placeholder="Search...">
+        <i class='bx bx-search-alt icon'></i>
+        <%= form_with url: search_path, method: :get, local: true do |f| %>
+          <%= f.text_field :keyword, placeholder: "Search..." %>
+          <% f.submit %>
+        <% end %>
       </li>
 
       <ul class="menu-links">
         <li class="nav-link">
-          <a href="#">
+          <%= link_to root_path do %>
             <i class='bx bx-home-alt icon'></i>
             <span class="text nav-text">Home</span>
-          </a>
+          <% end %>
         </li>
 
         <li class="nav-link">
-          <a href="#">
-            <i class='bx bx-bar-chart-alt-2 icon'></i>
+          <%= link_to recepis_path do %>
+            <i class='bx bx-book icon'></i>
             <span class="text nav-text">Recipes</span>
-          </a>
+          <% end %>
         </li>
 
         <li class="nav-link">
-          <a href="#">
+          <%= link_to new_recepi_path do %>
+            <i class='bx bx-cake icon'></i>
+            <span class="text nav-text">New Recipe</span>
+          <% end %>
+        </li>
+
+        <li class="nav-link">
+          <%= link_to customers_path do %>
             <i class='bx bx-bell icon'></i>
             <span class="text nav-text">My Page</span>
-          </a>
+          <% end %>
         </li>
 
         <li class="nav-link">
-          <a href="#">
-            <i class='bx bx-pie-chart-alt icon'></i>
+          <%= link_to customer_path(current_customer.id) do %>
+            <i class='bx bx-bar-chart-alt-2 icon'></i>
             <span class="text nav-text">My Data</span>
-          </a>
+          <% end %>
         </li>
 
         <li class="nav-link">
-          <a href="#">
-            <i class='bx bx-heart icon'></i>
+          <%= link_to my_recepi_customer_path(current_customer.id) do %>
+            <i class='bx bxs-user-account icon'></i>
             <span class="text nav-text">My Recipes</span>
-          </a>
+          <% end %>
         </li>
-            <li class="nav-link">
-          <a href="#">
+
+        <li class="nav-link">
+          <%= link_to my_favorite_customer_path(current_customer.id) do %>
             <i class='bx bx-heart icon'></i>
             <span class="text nav-text">My Favorite</span>
-          </a>
+          <% end %>
         </li>
-            <li class="nav-link">
-          <a href="#">
+
+        <li class="nav-link">
+          <%= link_to destroy_customer_session_path, method: :delete do %>
             <i class='bx bx-log-out icon'></i>
             <span class="text nav-text">Logout</span>
-          </a>
+          <% end %>
         </li>
       </ul>
     </div>
-
-    <div class="bottom-content">
-      <li class="mode">
-        <div class="sun-moon">
-          <i class='bx bx-moon icon moon'></i>
-          <i class='bx bx-sun icon sun'></i>
-        </div>
-        <span class="mode-text text">Dark mode</span>
-
-        <div class="toggle-switch">
-          <span class="switch"></span>
-        </div>
-      </li>
-
-    </div>
   </div>
-
 </nav>
 
 <section class="home">
 </section>
 
-<script>
-  const body = document.querySelector('body'),
-    sidebar = body.querySelector('nav'),
-    toggle = body.querySelector(".toggle"),
-    searchBtn = body.querySelector(".search-box"),
-    modeSwitch = body.querySelector(".toggle-switch"),
-    modeText = body.querySelector(".mode-text");
+<!--<script>-->
+<!--  const body = document.querySelector('body'),-->
+<!--    sidebar = body.querySelector('nav'),-->
+<!--    toggle = body.querySelector(".toggle"),-->
+<!--    searchBtn = body.querySelector(".search-box"),-->
+<!--    modeSwitch = body.querySelector(".toggle-switch"),-->
+<!--    modeText = body.querySelector(".mode-text");-->
 
 
-  toggle.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
-  })
+<!--  toggle.addEventListener("click", () => {-->
+<!--    sidebar.classList.toggle("close");-->
+<!--  })-->
 
-  searchBtn.addEventListener("click", () => {
-    sidebar.classList.remove("close");
-  })
+<!--  searchBtn.addEventListener("click", () => {-->
+<!--    sidebar.classList.remove("close");-->
+<!--  })-->
 
-  modeSwitch.addEventListener("click", () => {
-    body.classList.toggle("dark");
+<!--  modeSwitch.addEventListener("click", () => {-->
+<!--    body.classList.toggle("dark");-->
 
-    if (body.classList.contains("dark")) {
-      modeText.innerText = "Light mode";
-    } else {
-      modeText.innerText = "Dark mode";
+<!--    if (body.classList.contains("dark")) {-->
+<!--      modeText.innerText = "Light mode";-->
+<!--    } else {-->
+<!--      modeText.innerText = "Dark mode";-->
 
-    }
-  });
-</script>
+<!--    }-->
+<!--  });-->
+<!--</script>-->

@@ -1,9 +1,11 @@
+<%= stylesheet_link_tag 'recepis', media: 'all' %>
 <% @page_title = 'Edit' %>
+<%= render "layouts/sidebar" %>
 
-<div class="offset-1">
+<div class="offset-2">
  <h2>会員情報編集</h2>
   <%= form_with model: @customer, local: true do |f| %>
-    <table class="table table-borderless offset-1 col-sm-5">
+    <table class="table table-borderless offset-1">
       <tr>
         <th></th>
       </tr>
@@ -27,6 +29,3 @@
     </table>
   <% end %>
 </div>
-<li>
-  <%= link_to "TOP", root_path %>
-</li>

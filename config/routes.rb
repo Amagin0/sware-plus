@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   end
 
   resources :genres, only: %i[index create destroy]
+  get '/search' => 'searches#search'
 end

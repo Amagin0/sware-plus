@@ -1,15 +1,18 @@
 <%= stylesheet_link_tag 'recepis', media: 'all' %>
 <% @page_title = @customer.name + "'s Recipes" %>
-
-<div class="chapter-name">
-  <h2><strong><%= @customer.name %>'s Recipes</strong></h2>
-  <%= link_to "新しい順", my_recepi_customer_path(sort_update: "true") %> | <%= link_to "美味しい順", my_recepi_customer_path(sort_top_rate_taste: "true") %> | <%= link_to "面白い順", my_recepi_customer_path(sort_top_rate_fun: "true") %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-1">
+      <%= render "layouts/sidebar" %>
+    </div>
+    <div class="col-sm-11">
+      <div class="chapter-name">
+        <h2><strong><%= @customer.name %>'s Recipes</strong></h2>
+        <%= link_to "新しい順", my_recepi_customer_path(sort_update: "true") %> | <%= link_to "美味しい順", my_recepi_customer_path(sort_top_rate_taste: "true") %> | <%= link_to "面白い順", my_recepi_customer_path(sort_top_rate_fun: "true") %>
+      </div>
+      <% @sorted_recepis.each do |recepi| %>
+        <%= render "layouts/recepi_index", recepi: recepi %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<% @sorted_recepis.each do |recepi| %>
-  <%= render "layouts/recepi_index", recepi: recepi %>
-<% end %>
-
-<li>
-  <%= link_to "TOP", root_path %>
-</li>

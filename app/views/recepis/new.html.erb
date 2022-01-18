@@ -1,11 +1,14 @@
 <%= stylesheet_link_tag 'recepis', media: 'all' %>
 <% @page_title = 'New Recipe' %>
-
-<div class="chapter-name">
-  <h2><strong>New Recipe</strong></h2>
-</div>
+<%= render "layouts/sidebar" %>
 
 <div class="offset-1">
+  <div class="chapter-name">
+    <h2><strong>New Recipe</strong></h2>
+  </div>
+</div>
+
+<div class="offset-2">
   <%= form_with(model: @recepi, local: true) do |f| %>
     <table class="table table-borderless col-sm-6">
       <tr>
@@ -60,17 +63,17 @@
         <td><strong>＜タグ＞</strong></td>
       </tr>
       <tr>
-        <%= f.fields_for :genres do |t| %>
-          <%= render "recepis/genre_fields", f: t %>
+        <%= f.fields_for :tags do |t| %>
+          <%= render "recepis/tag_fields", f: t %>
         <% end %>
       </tr>
-      <tr class="genres"></tr>
+      <tr class="tags"></tr>
         <tr>
           <th class="col-sm-6"></th>
           <td class="links">
-            <%= link_to_add_association "＋", f, :genres, class: "btn btn-outline-success rounded-pill",
+            <%= link_to_add_association "＋", f, :tags, class: "btn btn-outline-success rounded-pill",
               data: {
-              association_insertion_node: '.genres', # モデル名 作り方をcocoonで増やす
+              association_insertion_node: '.tags', # モデル名 作り方をcocoonで増やす
               association_insertion_method: 'before'
               } %>
           </td>
@@ -84,6 +87,3 @@
     </table>
   <% end %>
 </div>
-<li>
-  <%= link_to "TOP", root_path %>
-</li>
