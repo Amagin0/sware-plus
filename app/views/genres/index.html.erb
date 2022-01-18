@@ -2,7 +2,7 @@
   <% if current_customer.admin? %>
     <%= form_with model: @genre do |f| %>
       <td>
-        <%= f.text_field :genre_name %>
+        <%= f.text_field :genre_name, class:"textfield" %>
         <%= f.submit class: "btn btn-success rounded-pill" %>
       </td>
     <% end %>

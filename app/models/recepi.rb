@@ -9,7 +9,7 @@ class Recepi < ApplicationRecord
   has_many :how_to_makes, dependent: :destroy
   has_many :recepi_raties, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  accepts_nested_attributes_for :recepi_ingredients, :how_to_makes, :genres, allow_destroy: true
+  accepts_nested_attributes_for :recepi_ingredients, :how_to_makes, :tags, allow_destroy: true
 
   validates :recepi_title, length: { maximum: 32 }
   scope :latest, -> { order(updated_at: :desc)}

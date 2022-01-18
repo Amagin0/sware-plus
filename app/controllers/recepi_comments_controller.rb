@@ -15,7 +15,7 @@ class RecepiCommentsController < ApplicationController
   def destroy
     @recepi_comment = @recepi.recepi_comments.find(params[:id])
     @recepi_comment.destroy
-    flash.now[:alert] = '投稿を削除しました'
+    render 'recepis/show'
   end
 
 private

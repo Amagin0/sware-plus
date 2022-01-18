@@ -1,0 +1,17 @@
+<button type="button" class="btn btn-outline-danger rounded-pill" data-toggle="modal" data-target="#deleteRecepiModal">削除</button>
+  <div class="modal fade" id="deleteRecepiModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>削除確認画面</h3>
+        </div>
+        <div class="modal-body">
+          <label>レシピを削除しますか？</label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-out-line-default" data-dismiss="modal">閉じる</button>
+          <%= link_to '削除', recepi_path(recepi), method: :delete, class: "btn btn-outline-danger rounded-pill" %>
+        </div>
+      </div>
+    </div>
+  </div>
