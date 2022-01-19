@@ -37,4 +37,11 @@ class Recepi < ApplicationRecord
     favorites.where(customer_id: customer.id).exists?
   end
 
+  def self.search(search)
+    if search != nil
+      Recepi.where('recepi_title LIKE(?)', "%#{search}%")
+    else
+      Recepi.all
+    end
+  end
 end

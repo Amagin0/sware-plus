@@ -66,7 +66,7 @@ class RecepisController < ApplicationController
 
   def recepi_params
     params.require(:recepi).permit(:recepi_title, :recepi_image,
-                                  how_to_makes_attributes: [:id , :recepi_make, :_destroy],
+                                  how_to_makes_attributes: [:id , :recepi_make, :how_to_image, :_destroy],
                                   recepi_ingredients_attributes: [:id, :ingredient, :_destroy],
                                   tags_attributes: [:id, :genre_id, :_destroy])
   end

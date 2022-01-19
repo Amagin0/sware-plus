@@ -17,4 +17,5 @@ Rails.application.routes.draw do
 
   resources :genres, only: %i[index create destroy]
   get '/search' => 'searches#search'
+  get '/rank' => 'ranks#rank'
 end

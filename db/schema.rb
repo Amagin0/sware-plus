@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2022_01_13_024524) do
   create_table "how_to_makes", force: :cascade do |t|
     t.integer "recepi_id"
     t.text "recepi_make"
+    t.string "how_to_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recepi_id"], name: "index_how_to_makes_on_recepi_id"

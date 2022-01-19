@@ -1,6 +1,7 @@
+  <%= stylesheet_link_tag 'recepis_show', media: 'all' %>
   <div class="card-footer">
     <%= form_with(model:[recepi, recepi_comment]) do |f| %>
-      <%= f.text_area :comment, rows: "3", size: "55" %>
-      <%= f.submit "コメントする", class: "btn btn-outline-success rounded-pill" %>
+      <%= f.text_area :comment, rows: "3" ,class:"recepi-comment-textarea"%>
+      <%= f.submit "コメントする", class: "btn btn-outline-success rounded-pill recepi-comment-submit" %>
     <% end %>
   </div>

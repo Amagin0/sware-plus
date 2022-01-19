@@ -1,0 +1,49 @@
+<%= stylesheet_link_tag 'recepis', media: 'all' %>
+<% @page_title = 'Ranking' %>
+<!--配列の1つ目から順に1位、２位と表示される-->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-1">
+      <%= render "layouts/sidebar" %>
+    </div>
+    <div class="col-sm-11">
+      <div class="chapter-name">
+      </div>
+      <h2><strong>いいねランキング(今週)</strong></h2>
+      <% @month_recepi_favorite_ranks.first(3).each.with_index(1) do |recepi, i| %>
+        第<%= i %>位
+        <%= render "layouts/recepi_index", recepi: recepi %>
+      <% end %>
+      <br>
+      <h2><strong>いいねランキング(今月)</strong></h2>
+      <% @week_recepi_favorite_ranks.first(3).each.with_index(1) do |recepi, i| %>
+        第<%= i %>位
+        <%= render "layouts/recepi_index", recepi: recepi %>
+      <% end %>
+      <br>
+      <h2><strong>おいしさランキング(今週)</strong></h2>
+      <% @week_recepi_taste_ranks.first(3).each.with_index(1) do |recepi, i| %>
+        第<%= i %>位
+        <%= render "layouts/recepi_index", recepi: recepi %>
+      <% end %>
+      <br>
+      <h2><strong>おいしさランキング(今月)</strong></h2>
+      <% @month_recepi_taste_ranks.first(3).each.with_index(1) do |recepi, i| %>
+        第<%= i %>位
+        <%= render "layouts/recepi_index", recepi: recepi %>
+      <% end %>
+      <br>
+      <h2><strong>おもしろさランキング(今週)</strong></h2>
+      <% @week_recepi_fun_ranks.first(3).each.with_index(1) do |recepi, i| %>
+        第<%= i %>位
+        <%= render "layouts/recepi_index", recepi: recepi %>
+      <% end %>
+      <br>
+      <h2><strong>おもしろさランキング(今月)</strong></h2>
+      <% @month_recepi_fun_ranks.first(3).each.with_index(1) do |recepi, i| %>
+        第<%= i %>位
+        <%= render "layouts/recepi_index", recepi: recepi %>
+      <% end %>
+    </div>
+  </div>
+</div>

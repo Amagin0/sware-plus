@@ -8,8 +8,6 @@ body
   background-image: image-url("brushed-alum.png");
   display: flex;
   flex-wrap: wrap;
-  // justify-content: center;
-  // align-items: center;
 }
 
 a
@@ -21,7 +19,7 @@ a
 {
   background-color: #ffab61;
   background-image: image-url("cross-scratches.png");
-  width: 45vw;
+  width: 40vw;
 }
 
 .card h4{
@@ -45,33 +43,78 @@ a
   backface-visibility: hidden;
 }
 
-.post-it-thin
+.post-it-ingredients
 {
-  width: 25rem;
-  height: 4rem;
-  padding: 1em 1em;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: calc(170 / 1400 * 100vw);
+  height: calc(40 / 1400 * 100vw);
   margin-bottom: 0;
   overflow: hidden;
   box-shadow: .25rem 0 .25rem hsla(0, 0%, 0%, .1);
   background-image:
     linear-gradient(90deg, hsla(0, 0%, 45%, .1) 2rem, hsla(0, 100%, 100%, 0) 2.5rem)
   , linear-gradient(90deg, hsla(60, 100%, 85%, 1), hsla(60, 100%, 85%, 1));
-  font-size: 1.125rem;
+  font-size: calc(15 / 1400 * 100vw);
   line-height: 1.8;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.post-it-thick
+.post-it-how-to-makes
 {
-  width: 25rem;
-  height: 20rem;
+  width: calc(250 / 1400 * 100vw);
+  height: calc(180 / 1400 * 100vw);
   padding: 1.5em;
   overflow: hidden;
   box-shadow: 0 .25rem .25rem hsla(0, 0%, 0%, .1);
   background-image:
     linear-gradient(180deg, hsla(0, 0%, 45%, .1) 2rem, hsla(0, 100%, 100%, 0) 2.5rem)
   , linear-gradient(180deg, hsla(200, 100%, 85%, 1), hsla(200, 100%, 85%, 1));
-  font-size: 1.125rem;
+  font-size: calc(15 / 1400 * 100vw);
   line-height: 1.8;
+}
+
+.post-it-genres
+{
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: calc(130 / 1400 * 100vw);
+  height: calc(40 / 1400 * 100vw);
+  margin-bottom: 1em;
+  overflow: hidden;
+  box-shadow: .25rem 0 .25rem hsla(0, 0%, 0%, .1);
+  background-image:
+    linear-gradient(90deg, hsla(0, 0%, 45%, .1) 2rem, hsla(0, 100%, 100%, 0) 2.5rem)
+  , linear-gradient(90deg, hsla(60, 100%, 85%, 1), hsla(60, 100%, 85%, 1));
+  font-size: calc(15 / 1400 * 100vw);
+  line-height: 1.8;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.how-to-make-box
+{
+  display: flex;
+}
+
+.how_to_image
+{
+  width: calc(180 / 1400 * 100vw);
+  height: calc(180 / 1400 * 100vw);
+  margin-left: calc(20 / 1400 * 100vw);
+}
+
+.recepi-comment-textarea
+{
+  width: calc(400 / 1400 * 100vw);
+}
+
+.recepi-comment-submit
+{
+  margin-bottom: 4rem;
 }

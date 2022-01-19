@@ -20,23 +20,24 @@
     <p class="card-text">
       <span class="mark text-left"><strong>材料</strong></span><br>
       <% @recepi.recepi_ingredients.each do |recepi_ingredient| %>
-        <p class="text-center post-it-thin"><%= recepi_ingredient.ingredient %></p><br>
+        <p class="post-it-ingredients"><%= recepi_ingredient.ingredient %></p><br>
       <% end %>
     </p>
     <p class="card-text">
       <span class="mark text-left"><strong>作り方</strong></span><br>
       <% @recepi.how_to_makes.each do |how_to_make| %>
-        <p class="text-center post-it-thick">
-          <%= how_to_make.recepi_make %>
-        </p>
+        <div class="how-to-make-box">
+          <p class="post-it-how-to-makes"><%= how_to_make.recepi_make %></p>
+          <p><%= attachment_image_tag(how_to_make, :how_to_image, fallback: "default_product.png") %></p>
+        </div>
       <% end %>
     </p>
     <p class="card-text">
-      <span class="mark text-left"><strong>タグ</strong></span><br>
+      <span class="mark text-left"><strong>ジャンル</strong></span><br>
       <% @recepi.genres.each do |genre| %>
-        <p class="text-center post-it-thick">
+        <div class="post-it-genres">
           <%= genre.genre_name %>
-        </p>
+        </div>
       <% end %>
     </p>
 
