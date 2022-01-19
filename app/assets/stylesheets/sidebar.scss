@@ -15,7 +15,7 @@
 }
 
 body{
-    min-height: 100vh;
+    max-height: 100vh;
     background-color: var(--body-color);
     transition: var(--tran-05);
     background-image: image-url("brushed-alum.png");
