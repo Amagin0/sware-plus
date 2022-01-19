@@ -1,7 +1,6 @@
 class RecepiCommentsController < ApplicationController
     before_action :set_recepi_comment, only: %i[create destroy]
 
-
   def create
     @recepi_comment = RecepiComment.new(recepi_comment_params)
     @recepi_comment.recepi_id = @recepi.id

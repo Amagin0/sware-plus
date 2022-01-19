@@ -1,4 +1,5 @@
 class RecepisController < ApplicationController
+  before_action :authenticate_customer!, except: %i[index show]
   before_action :set_recepi, only: %i[show edit update destroy]
   impressionist :action => [:show]
 
@@ -26,10 +27,12 @@ class RecepisController < ApplicationController
     @recepi_comment = RecepiComment.new
     @recepi_raties = RecepiRaty.all
     impressionist(@recepi, nil, unique: [:session_hash.to_s]) # PV数(gem impressionist)
-    if RecepiRaty.exists?(customer_id: current_customer.id ,recepi_id: @recepi.id) # 該当レシピのカスタマーidがあるか判定
-      @recepi_raty = RecepiRaty.find_by(customer_id: current_customer.id ,recepi_id: @recepi.id) # find_byでひとつだけ取得してくる
-    else
-      @recepi_raty = RecepiRaty.new
+    if customer_signed_in?
+      if RecepiRaty.exists?(customer_id: current_customer.id ,recepi_id: @recepi.id) # 該当レシピのカスタマーidがあるか判定
+        @recepi_raty = RecepiRaty.find_by(customer_id: current_customer.id ,recepi_id: @recepi.id) # find_byでひとつだけ取得してくる
+      else
+        @recepi_raty = RecepiRaty.new
+      end
     end
   end
 

@@ -40,53 +40,62 @@
         </li>
 
         <li class="nav-link">
-          <%= link_to new_recepi_path do %>
-            <i class='bx bx-cake icon'></i>
-            <span class="text nav-text">New Recipe</span>
-          <% end %>
-        </li>
-
-        <li class="nav-link">
-          <%= link_to customers_path do %>
-            <i class='bx bx-bell icon'></i>
-            <span class="text nav-text">My Page</span>
-          <% end %>
-        </li>
-
-        <li class="nav-link">
-          <%= link_to customer_path(current_customer.id) do %>
-            <i class='bx bx-bar-chart-alt-2 icon'></i>
-            <span class="text nav-text">My Data</span>
-          <% end %>
-        </li>
-
-        <li class="nav-link">
-          <%= link_to my_recepi_customer_path(current_customer.id) do %>
-            <i class='bx bxs-user-account icon'></i>
-            <span class="text nav-text">My Recipes</span>
-          <% end %>
-        </li>
-
-        <li class="nav-link">
-          <%= link_to my_favorite_customer_path(current_customer.id) do %>
-            <i class='bx bx-heart icon'></i>
-            <span class="text nav-text">My Favorite</span>
-          <% end %>
-        </li>
-
-        <li class="nav-link">
           <%= link_to rank_path do %>
             <i class='bx bx-crown icon'></i>
             <span class="text nav-text">Ranking</span>
           <% end %>
         </li>
 
-        <li class="nav-link">
-          <%= link_to destroy_customer_session_path, method: :delete do %>
-            <i class='bx bx-log-out icon'></i>
-            <span class="text nav-text">Logout</span>
-          <% end %>
-        </li>
+        <% if customer_signed_in? %>
+          <li class="nav-link">
+            <%= link_to new_recepi_path do %>
+              <i class='bx bx-cake icon'></i>
+              <span class="text nav-text">New Recipe</span>
+            <% end %>
+          </li>
+
+          <li class="nav-link">
+            <%= link_to customers_path do %>
+              <i class='bx bx-bell icon'></i>
+              <span class="text nav-text">My Page</span>
+            <% end %>
+          </li>
+
+          <li class="nav-link">
+            <%= link_to customer_path(current_customer.id) do %>
+              <i class='bx bx-bar-chart-alt-2 icon'></i>
+              <span class="text nav-text">My Data</span>
+            <% end %>
+          </li>
+
+          <li class="nav-link">
+            <%= link_to my_recepi_customer_path(current_customer.id) do %>
+              <i class='bx bxs-user-account icon'></i>
+              <span class="text nav-text">My Recipes</span>
+            <% end %>
+          </li>
+
+          <li class="nav-link">
+            <%= link_to my_favorite_customer_path(current_customer.id) do %>
+              <i class='bx bx-heart icon'></i>
+              <span class="text nav-text">My Favorite</span>
+            <% end %>
+          </li>
+
+          <li class="nav-link">
+            <%= link_to destroy_customer_session_path, method: :delete do %>
+              <i class='bx bx-log-out icon'></i>
+              <span class="text nav-text">Logout</span>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-link">
+            <%= link_to '/customers/sign_up' do %>
+              <i class='bx bx-log-in icon'></i>
+              <span class="text nav-text">Account</span>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
