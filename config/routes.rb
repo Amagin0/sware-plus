@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     get 'my_recepi', on: :member
     get 'my_favorite', on: :member
     resource :relationships, only: %i[create destroy]
-      get 'followings' => 'relationships#followings', as: 'followings'
-      get 'followers' => 'relationships#followers', as: 'followers'
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
   end
 
   resources :genres, only: %i[index create destroy]

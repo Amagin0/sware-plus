@@ -1,5 +1,4 @@
 class RanksController < ApplicationController
-
   def rank
     @recepis = Recepi.all
 
@@ -17,11 +16,10 @@ class RanksController < ApplicationController
     # 月間ランキング(美味しさ)
     @month_recepi_taste_ranks = Recepi.left_joins(:recepi_raties).where(created_at: Time.current.all_month).order(recepi_taste: :desc).distinct
     # 週間ランキング(美味しさ)
-    @week_recepi_taste_ranks = Recepi.left_joins(:recepi_raties).where(created_at: Time.current.all_month).order(recepi_taste: :desc).distinct
+    @week_recepi_taste_ranks = Recepi.left_joins(:recepi_raties).where(created_at: Time.current.all_week).order(recepi_taste: :desc).distinct
     # 月間ランキング(美味しさ)
     @month_recepi_fun_ranks = Recepi.left_joins(:recepi_raties).where(created_at: Time.current.all_month).order(recepi_fun: :desc).distinct
     # 週間ランキング(美味しさ)
-    @week_recepi_fun_ranks = Recepi.left_joins(:recepi_raties).where(created_at: Time.current.all_month).order(recepi_fun: :desc).distinct
-
+    @week_recepi_fun_ranks = Recepi.left_joins(:recepi_raties).where(created_at: Time.current.all_week).order(recepi_fun: :desc).distinct
   end
 end

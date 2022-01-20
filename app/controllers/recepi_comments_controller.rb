@@ -1,5 +1,5 @@
 class RecepiCommentsController < ApplicationController
-    before_action :set_recepi_comment, only: %i[create destroy]
+  before_action :set_recepi_comment, only: %i[create destroy]
 
   def create
     @recepi_comment = RecepiComment.new(recepi_comment_params)
@@ -17,7 +17,8 @@ class RecepiCommentsController < ApplicationController
     render 'recepis/show'
   end
 
-private
+  private
+
   def set_recepi_comment
     @recepi = Recepi.find(params[:recepi_id])
   end
@@ -25,5 +26,4 @@ private
   def recepi_comment_params
     params.require(:recepi_comment).permit(:comment)
   end
-
 end

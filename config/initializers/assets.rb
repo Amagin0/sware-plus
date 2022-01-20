@@ -11,7 +11,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-Rails.application.config.assets.precompile += %w(
+Rails.application.config.assets.precompile += %w[
   application.css
   homes.css
   signup.css
@@ -19,4 +19,4 @@ Rails.application.config.assets.precompile += %w(
   customers.css
   recepis_show.css
   sidebar.css
- )
+]
