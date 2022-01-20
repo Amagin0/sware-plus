@@ -43,15 +43,23 @@ a
   backface-visibility: hidden;
 }
 
+.card-text-ingredients
+{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
 .post-it-ingredients
 {
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: calc(170 / 1400 * 100vw);
+  width: calc(160 / 1400 * 100vw);
   height: calc(40 / 1400 * 100vw);
-  margin-bottom: 0;
+  margin-bottom: 1em;
+  margin-right: 1em;
   overflow: hidden;
   box-shadow: .25rem 0 .25rem hsla(0, 0%, 0%, .1);
   background-image:
