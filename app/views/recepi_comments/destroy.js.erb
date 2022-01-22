@@ -1,3 +1,0 @@
-$("#recepi_<%= @recepi.id %>").html("コメント数：<%= @recepi.recepi_comments.count %>件");
-$("#recepi_comment_area").html("<%= j(render 'recepi_comments/index', recepi: @recepi) %>");
-$("textarea").val('');

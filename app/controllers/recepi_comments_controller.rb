@@ -7,14 +7,13 @@ class RecepiCommentsController < ApplicationController
     @recepi_comment.customer_id = current_customer.id
     if @recepi_comment.save
       flash.now[:notice] = 'コメントを投稿しました'
-      # redirect_back(fallback_location: root_url)
     end
   end
 
   def destroy
     @recepi_comment = @recepi.recepi_comments.find(params[:id])
     @recepi_comment.destroy
-    render 'recepis/show'
+    redirect_back(fallback_location: root_url)
   end
 
   private
