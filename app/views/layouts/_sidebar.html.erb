@@ -40,11 +40,19 @@
         </li>
 
         <li class="nav-link">
+          <%= link_to genres_path do %>
+            <i class='bx bx-customize idon'></i>
+            <span class="text nav-text">Genres</span>
+          <% end %>
+        </li>
+
+        <li class="nav-link">
           <%= link_to rank_path do %>
             <i class='bx bx-crown icon'></i>
             <span class="text nav-text">Ranking</span>
           <% end %>
         </li>
+
 
         <% if customer_signed_in? %>
           <li class="nav-link">

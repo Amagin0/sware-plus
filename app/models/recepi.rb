@@ -39,7 +39,13 @@ class Recepi < ApplicationRecord
 
   def self.search(search)
     if !search.nil?
-      Recepi.where('recepi_title LIKE(?)', "%#{search}%")
+      Recepi.where('recepi_title LIKE?', "%#{search}%")
+      genre = Genre.where('genre_name LIKE?', "%#{search}%")
+      if genre.count != 0
+        genre[0].recepis
+      else
+        Recepi.where('recepi_title LIKE?', "%#{search}%")
+      end
     else
       Recepi.all
     end

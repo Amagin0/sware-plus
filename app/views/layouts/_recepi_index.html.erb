@@ -4,7 +4,7 @@
       <div class="content">
         <div class="img">
           <%= link_to recepi_path(recepi) do %>
-            <%= attachment_image_tag(recepi, :recepi_image, :fill, 100, 100, format:'png', fallback: "no-image-icon.png") %>
+            <%= attachment_image_tag(recepi, :recepi_image, :fill, 100, 100, fallback: "no-image-icon.png") %>
           <% end %>
         </div>
       </div>

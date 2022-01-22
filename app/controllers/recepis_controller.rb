@@ -49,7 +49,7 @@ class RecepisController < ApplicationController
       redirect_to recepi_path(@recepi), notice: '新しいレシピを作成しました'
     else
       @recepis = Recepi.all
-      render 'index'
+      render 'new'
     end
   end
 
