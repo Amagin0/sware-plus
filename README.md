@@ -45,7 +45,6 @@ Twitterなどで定期的にバズったりしていますが、また作ろう�
 
 ## :clipboard:ER図
 ![ER図](./pf.drawio.svg)
-<img src="pf.drawio.svg">
 
 ## :muscle:チャレンジ要素一覧
 [チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1rxWOBw5o4TihQqX-bKjiX6ZBEvHCDJnoDnWOgQdE6uo/edit#gid=0)
