@@ -43,6 +43,7 @@ class RecepisController < ApplicationController
   end
 
   def create
+
     @recepi = Recepi.new(recepi_params)
     @recepi.customer_id = current_customer.id
     if @recepi.save
@@ -65,9 +66,6 @@ class RecepisController < ApplicationController
   end
 
   def recepi_params
-    params.require(:recepi).permit(:recepi_title, :recepi_image,
-                                   how_to_makes_attributes: %i[id recepi_make how_to_image _destroy],
-                                   recepi_ingredients_attributes: %i[id ingredient _destroy],
-                                   tags_attributes: %i[id genre_id _destroy])
+    params.require(:recepi).permit(:recepi_title, :recepi_image, how_to_makes_attributes: %i[id recepi_make how_to_image _destroy],recepi_ingredients_attributes: %i[id ingredient _destroy],tags_attributes: %i[id genre_id _destroy])
   end
 end
