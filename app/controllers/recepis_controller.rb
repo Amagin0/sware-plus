@@ -39,15 +39,14 @@ class RecepisController < ApplicationController
   def edit; end
 
   def update
-    redirect_to recepi_path(@recepi), notice: 'レシピを更新しました' if @recepi.update(recepi_params)
+    redirect_to recepi_path(@recepi), if @recepi.update(recepi_params)
   end
 
   def create
-
     @recepi = Recepi.new(recepi_params)
     @recepi.customer_id = current_customer.id
     if @recepi.save
-      redirect_to recepi_path(@recepi), notice: '新しいレシピを作成しました'
+      redirect_to recepi_path(@recepi)
     else
       @recepis = Recepi.all
       render 'new'
@@ -56,7 +55,7 @@ class RecepisController < ApplicationController
 
   def destroy
     @recepi.destroy
-    redirect_to recepis_path, notice: 'レシピを削除しました'
+    redirect_to recepis_path
   end
 
   private
@@ -66,6 +65,9 @@ class RecepisController < ApplicationController
   end
 
   def recepi_params
-    params.require(:recepi).permit(:recepi_title, :recepi_image, how_to_makes_attributes: %i[id recepi_make how_to_image _destroy],recepi_ingredients_attributes: %i[id ingredient _destroy],tags_attributes: %i[id genre_id _destroy])
+    params.require(:recepi).permit(:recepi_title, :recepi_image,
+                                  how_to_makes_attributes: %i[id recepi_make how_to_image _destroy],
+                                  recepi_ingredients_attributes: %i[id ingredient _destroy],
+                                  tags_attributes: %i[id genre_id _destroy])
   end
 end
