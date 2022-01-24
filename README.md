@@ -44,7 +44,7 @@ Twitterなどで定期的にバズったりしていますが、また作ろう�
 - クリスマスやバレンタインなどの催事のときに一風変わったお菓子を作りたいとき。
 
 ## :clipboard:ER図
-![alt text](,/pf.drawio.svg)
+![ER図](./pf.drawio.svg)
 <img src="pf.drawio.svg">
 
 ## :muscle:チャレンジ要素一覧
