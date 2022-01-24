@@ -4,7 +4,7 @@
 <%= render "layouts/sidebar" %>
 
 <div class="card offset-2">
-  <img class="card-img-top"><%= attachment_image_tag(@recepi, :recepi_image, :fill, 100, 100, fallback: "default_product.png") %></p>
+  <img class="card-img-top"><%= attachment_image_tag(@recepi, :recepi_image, :fill, 600, 600, fallback: "default_product.png") %></p>
   <div class="card-body">
 
   <% if customer_signed_in? %>
@@ -21,7 +21,7 @@
       <% end %>
     </div>
     <h4 class="card-title text-center"><strong><%= @recepi.recepi_title %></strong></h4>
-  
+
     <p class="card-text">
       <span class="mark text-left"><strong>材料</strong></span><br>
       <div class="card-text-ingredients">
@@ -30,7 +30,7 @@
         <% end %>
       </div>
     </p>
-    
+
     <p class="card-text">
       <span class="mark text-left"><strong>作り方</strong></span><br>
       <% @recepi.how_to_makes.each do |how_to_make| %>
@@ -40,7 +40,7 @@
         </div>
       <% end %>
     </p>
-    
+
     <p class="card-text">
       <span class="mark text-left"><strong>ジャンル</strong></span><br>
       <% @recepi.genres.each do |genre| %>

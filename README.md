@@ -43,8 +43,8 @@ Twitterなどで定期的にバズったりしていますが、また作ろう�
 - 他の人がオススメするレシピを知りたいとき。<br>
 - クリスマスやバレンタインなどの催事のときに一風変わったお菓子を作りたいとき。
 
-## :clipboard:設計書
-<>
+## :clipboard:ER図
+{{< svg src="pf.drawio.svg" title="ER図" >}}
 
 ## :muscle:チャレンジ要素一覧
 [チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1rxWOBw5o4TihQqX-bKjiX6ZBEvHCDJnoDnWOgQdE6uo/edit#gid=0)
