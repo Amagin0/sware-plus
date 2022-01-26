@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'homes#top'
-  devise_for :customers
+  devise_for :customers,skip: [:password,], controllers: {
+  registrations: "customers/registrations",
+  sessions: 'customers/sessions'
+}
   resources :recepis, only: %i[new index show edit update create destroy] do
     resources :recepi_comments, only: %i[create destroy]
     resources :recepi_raties, only: %i[create]

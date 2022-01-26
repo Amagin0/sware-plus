@@ -1,6 +1,6 @@
 class RecepisController < ApplicationController
+  before_action :set_recepi, only: %i[edit update destroy]
   before_action :authenticate_customer!, except: %i[index show]
-  before_action :set_recepi, only: %i[show edit update destroy]
   impressionist action: [:show]
 
   def new
@@ -24,6 +24,7 @@ class RecepisController < ApplicationController
   end
 
   def show
+    @recepi = Recepi.find(params[:id])
     @recepi_comment = RecepiComment.new
     @recepi_raties = RecepiRaty.all
     impressionist(@recepi, nil, unique: [:session_hash.to_s]) # PV数(gem impressionist)
@@ -70,4 +71,5 @@ class RecepisController < ApplicationController
                                   recepi_ingredients_attributes: %i[id ingredient _destroy],
                                   tags_attributes: %i[id genre_id _destroy])
   end
+end
 end
