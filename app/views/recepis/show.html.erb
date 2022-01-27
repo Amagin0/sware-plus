@@ -7,12 +7,12 @@
   <img class="card-img-top"><%= attachment_image_tag(@recepi, :recepi_image, :fill, 600, 600, fallback: "default_product.png") %></p>
   <div class="card-body">
 
-  <% if customer_signed_in? %>
-    <div class="text-left favorite-btn_<%= @recepi.id %>">
-      <%= render "favorites/favorite-btn", recepi: @recepi %>
-    </div>
-  <% else %>
-  <% end %>
+    <% if customer_signed_in? %>
+      <div class="text-left favorite-btn_<%= @recepi.id %>">
+        <%= render "favorites/favorite-btn", recepi: @recepi %>
+      </div>
+    <% else %>
+    <% end %>
 
     <div class="card-title text-left" id="recepi_<%= @recepi.id %>">
       閲覧数：<%= @recepi.impressionist_count(:filter => :session_hash) %>&emsp;
@@ -50,30 +50,27 @@
       <% end %>
     </p>
 
-  <div class="card-text text-center">
-    <% if customer_signed_in? %>
-      <% if @recepi.written_by?(current_customer) %>
-      <%= link_to "編集", edit_recepi_path(@recepi), class: "btn btn-outline-primary rounded-pill" %>&emsp;
-      <!--モーダルウィンドウ-->
-      <%= render 'recepis/recepi_modal', recepi: @recepi %>
-      <!--ここまで-->
+    <div class="card-text text-center">
+      <% if customer_signed_in? && @recepi.written_by?(current_customer) %>
+        <%= link_to "編集", edit_recepi_path(@recepi), class: "btn btn-outline-primary rounded-pill" %>&emsp;
+        <!--モーダルウィンドウ-->
+          <%= render 'recepis/recepi_modal', recepi: @recepi %>
+        <!--ここまで-->
       <% else %>
       <% end %>
-    <% else %>
-    <% end %>
-  </div>
+    </div>
 
-	  <div class="card-footer text-right">
-  		  <%= link_to customer_path(@recepi.customer) do %>
-          <%#= attachment_image_tag(@recepi.customer, :customer_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
-          レシピ製作者：<%= @recepi.customer.name %>
-        <% end %>
-        <% if customer_signed_in? %>
+    <div class="card-footer text-right">
+  	  <%= link_to customer_path(@recepi.customer) do %>
+        <%#= attachment_image_tag(@recepi.customer, :customer_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
+        レシピ製作者：<%= @recepi.customer.name %>
+      <% end %>
+      <% if customer_signed_in? %>
         <div id="follow_<%= @recepi.customer.id %>">
           <%= render "recepis/follow", customer: @recepi.customer %>
         </div>
-        <% else %>
-        <% end %>
+      <% else %>
+      <% end %>
     </div>
     <% if customer_signed_in? %>
       <% if RecepiRaty.exists?(customer_id: current_customer.id ,recepi_id: @recepi.id) %>
@@ -86,25 +83,21 @@
             <div id="raty_fun_star" data-score="<%= @recepi_raty.recepi_fun %>"></div>
               <!--data-scoreで前回値をもってきている-->
           </div>
-          <div class="text-center">
-          </div>
+          <div class="text-center"></div>
         <% end %>
       <% else %>
         <%= form_with model:[@recepi, @recepi_raty], url: recepi_recepi_raties_path(@recepi), local: true, method: :post do |f| %>
           <div class="card-footer text-center">
               <%= f.label :美味しさ %>
-            <div id="raty_taste_star_new">
-            </div>
+            <div id="raty_taste_star_new"></div>
               <%= f.label :面白さ %>
-            <div id="raty_fun_star_new">
-            </div>
+            <div id="raty_fun_star_new"></div>
           </div>
           <div class="text-center">
             <%= f.submit "評価する", class: "btn btn-outline-primary rounded-pill" %>
           </div>
         <% end %>
       <% end %>
-    <% else %>
     <% end %>
   </div>
 
@@ -117,6 +110,7 @@
       <%= render 'recepi_comments/form', recepi: @recepi, recepi_comment: @recepi_comment %>
     </div>
   <% else %>
+    <h3>コメントはログインユーザーのみが出来ます</h3>
   <% end %>
 
 </div>

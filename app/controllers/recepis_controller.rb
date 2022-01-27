@@ -40,7 +40,9 @@ class RecepisController < ApplicationController
   def edit; end
 
   def update
-    redirect_to recepi_path(@recepi), if @recepi.update(recepi_params)
+    if @recepi.update(recepi_params)
+      redirect_to recepi_path(@recepi)
+    end
   end
 
   def create
@@ -71,5 +73,4 @@ class RecepisController < ApplicationController
                                   recepi_ingredients_attributes: %i[id ingredient _destroy],
                                   tags_attributes: %i[id genre_id _destroy])
   end
-end
 end

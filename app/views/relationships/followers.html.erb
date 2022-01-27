@@ -1,2 +1,4 @@
-<h1 class="offset-1">Follower Users</h1>
-<%= render "follow_index", customers: @customers %>
+<h1 class="offset-1 mt-5">Follower Users</h1>
+<div class="mt-5">
+  <%= render partial: "follow_index", locals: {customers: @customers, name: "フォローされている"} %>
+</div>

@@ -12,6 +12,8 @@
       <% @customer.favorites.each do |favorite| %>
         <%= render "layouts/recepi_index", recepi: favorite.recepi %>
       <% end %>
+      
+      <%#= render partial: "layouts/recepi_index", collection: @customer.favorites, as: 'recepi' %>
     </div>
   </div>
 </div>

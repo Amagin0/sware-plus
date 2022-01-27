@@ -3,33 +3,28 @@
       <tr>
         <th></th>
       </tr>
-      <tr>
-        <td><strong>＜タイトル＞</strong></td>
-      </tr>
-        <tr><td><%= f.text_field :recepi_title, autofocus: true, placeholder: "＜タイトルを入力してください(32文字以内)＞", size: "50" %></td></tr>
-      <tr>
-        <td><strong>＜材料＞</strong></td>
-      </tr>
+      <%= render 'title', title: 'タイトル' %>
+      <tr><td><%= f.text_field :recepi_title, autofocus: true, placeholder: "＜タイトルを入力してください(32文字以内)＞", size: "50" %></td></tr>
+
+      <%= render 'title', title: '材料' %>
       <tr>
         <%= f.fields_for :recepi_ingredients do |t| %>
           <%= render "recepis/recepi_ingredient_fields", f: t %>
         <% end %>
       </tr>
-        <tr class="recepi_ingredients"></tr>
-        <tr>
-          <th class="col-sm-6"></th>
-          <td class="links">
-            <%= link_to_add_association "＋", f, :recepi_ingredients, class: "btn btn-outline-success rounded-pill",
-              data: {
-              association_insertion_node: '.recepi_ingredients', # モデル名 材料をcocoonで増やす
-              association_insertion_method: 'before' # 追加するときどこに増やすかを指定
-              } %>
-          </td>
-        </tr>
-
+      <tr class="recepi_ingredients"></tr>
       <tr>
-        <td><strong>＜作り方＞</strong></td>
+        <th class="col-sm-6"></th>
+        <td class="links">
+          <%= link_to_add_association "＋", f, :recepi_ingredients, class: "btn btn-outline-success rounded-pill",
+            data: {
+            association_insertion_node: '.recepi_ingredients', # モデル名 材料をcocoonで増やす
+            association_insertion_method: 'before' # 追加するときどこに増やすかを指定
+            } %>
+        </td>
       </tr>
+
+      <%= render 'title', title: '作り方' %>
       <tr>
         <%= f.fields_for :how_to_makes do |t| %>
           <%= render "recepis/how_to_make_fields", f: t %>
@@ -47,25 +42,24 @@
         </td>
       </tr>
 
-      <tr>
-        <td><strong>＜ジャンル＞</strong></td>
-      </tr>
+      <%= render 'title', title: 'ジャンル' %>
       <tr>
         <%= f.fields_for :tags do |t| %>
           <%= render "recepis/tag_fields", f: t %>
         <% end %>
       </tr>
       <tr class="tags"></tr>
-        <tr>
-          <th class="col-sm-6"></th>
-          <td class="links">
-            <%= link_to_add_association "＋", f, :tags, class: "btn btn-outline-success rounded-pill",
-              data: {
-              association_insertion_node: '.tags', # モデル名 タグをcocoonで増やす(中間テーブル)
-              association_insertion_method: 'before'
-              } %>
-          </td>
-        </tr>
+      <tr>
+        <th class="col-sm-6"></th>
+        <td class="links">
+          <%= link_to_add_association "＋", f, :tags, class: "btn btn-outline-success rounded-pill",
+            data: {
+            association_insertion_node: '.tags', # モデル名 タグをcocoonで増やす(中間テーブル)
+            association_insertion_method: 'before'
+            } %>
+        </td>
+      </tr>
+      <%= render 'title', title: 'メイン画像' %>
       <tr>
         <td><%= f.attachment_field :recepi_image %></td>
       </tr>

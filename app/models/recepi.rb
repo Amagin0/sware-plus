@@ -1,6 +1,7 @@
 class Recepi < ApplicationRecord
   attachment :recepi_image
   is_impressionable
+  
   belongs_to :customer
   has_many :tags, dependent: :destroy
   has_many :genres, through: :tags
@@ -21,7 +22,7 @@ class Recepi < ApplicationRecord
   def  written_by?(current_customer)
     customer == current_customer || current_customer.admin?
   end
-
+  
   def avg_taste
     if recepi_raties.empty?
       0
@@ -55,6 +56,4 @@ class Recepi < ApplicationRecord
       Recepi.all
     end
   end
-
-
 end

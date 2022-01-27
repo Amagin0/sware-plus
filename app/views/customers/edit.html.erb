@@ -2,7 +2,7 @@
 <% @page_title = 'Edit' %>
 <%= render "layouts/sidebar" %>
 
-<div class="offset-2">
+<div class="offset-2 mt-5">
  <h2>会員情報編集</h2>
   <%= form_with model: @customer, local: true do |f| %>
     <table class="table table-borderless offset-1">
@@ -23,7 +23,7 @@
           <%= f.submit "保存", class: "btn btn-success rounded-pill" %>
         </td>
         <td>
-          <%= link_to "退会", "#" ,class: "btn btn-danger rounded-pill" %>
+          <%= link_to "退会", unsubscribe_customers_path ,class: "btn btn-danger rounded-pill" %>
         </td>
       </tr>
     </table>
