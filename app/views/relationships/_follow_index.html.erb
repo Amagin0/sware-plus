@@ -15,7 +15,7 @@
         <tr>
           <td><%= attachment_image_tag(customer, :customer_image_id, :fill,size: "100x100", fallback: "no-image-icon.png") %></td>
           <td>
-            <%= link_to recepi_path(customer) do %>
+            <%= link_to customer_path(customer) do %>
               <%= customer.name %>
             <% end %>
           </td>
