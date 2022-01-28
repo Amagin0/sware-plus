@@ -52,7 +52,7 @@
 
     <div class="card-text text-center">
       <% if customer_signed_in? %>
-        <% if @recepi.written_by?(current_customer) %>
+        <% if @recepi.customer == current_customer || current_customer.admin? %>
           <%= link_to "編集", edit_recepi_path(@recepi), class: "btn btn-outline-primary rounded-pill" %>&emsp;
           <!--モーダルウィンドウ-->
             <%= render 'recepis/recepi_modal', recepi: @recepi %>
