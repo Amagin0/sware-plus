@@ -19,6 +19,7 @@
       <li class="search-box">
         <i class='bx bx-search-alt icon'></i>
         <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <%# form_with url: recepis_path, local: true do |f| %>
           <%= f.text_field :keyword, placeholder: "Name or #Genre" %>
           <% f.submit %>
         <% end %>

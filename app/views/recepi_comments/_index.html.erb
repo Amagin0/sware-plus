@@ -11,10 +11,12 @@
       <td><%= recepi_comment.comment %></td>
     </tr>
     <tr>
-      <% if current_customer == recepi_comment_customer || current_customer.admin? %>
-        <td>
-          <%= render 'recepi_comments/comment_modal', recepi_comment: recepi_comment, name: 'コメント' %>
-        </td>
+      <% if customer_signed_in? %>
+        <% if recepi_comment.comment_written_by?(current_customer) %>
+          <td>
+            <%= render 'recepi_comments/comment_modal', recepi_comment: recepi_comment, name: 'コメント' %>
+          </td>
+        <% end %>
       <% end %>
     </tr>
   <% end %>

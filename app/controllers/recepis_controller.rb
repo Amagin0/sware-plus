@@ -1,6 +1,6 @@
 class RecepisController < ApplicationController
-  before_action :set_recepi, only: %i[edit update destroy]
   before_action :authenticate_customer!, except: %i[index show]
+  before_action :set_recepi, only: %i[edit update destroy]
   impressionist action: [:show]
 
   def new
@@ -21,6 +21,23 @@ class RecepisController < ApplicationController
                else
                  Recepi.all
                end
+               
+    # if (params[:keyword]).present?
+    #   if (params[:keyword])[0] == '#'
+    #     @recepis = Genre.search(params[:keyword]).order('created_at DESC')
+    #     @title = params[:keyword]
+    #     render 'recepis/index.html.erb'
+    #     # 検索内容の初めに # がついている場合はジャンル検索=>ジャンルモデル
+    #   else
+    #     @recepis = Recepi.search(params[:keyword]).order('created_at DESC')
+    #     @title = params[:keyword]
+    #     render 'recepis/index.html.erb'
+    #     # #がついていない場合はキーワード検索にわけている=>レシピモデル
+    #   end
+    # else
+    #   render 'recepis/index.html.erb'
+    # end
+
   end
 
   def show
@@ -29,12 +46,23 @@ class RecepisController < ApplicationController
     @recepi_raties = RecepiRaty.all
     impressionist(@recepi, nil, unique: [:session_hash.to_s]) # PV数(gem impressionist)
     if customer_signed_in?
-      @recepi_raty = if RecepiRaty.exists?(customer_id: current_customer.id, recepi_id: @recepi.id) # 該当レシピのカスタマーidがあるか判定
-                       RecepiRaty.find_by(customer_id: current_customer.id, recepi_id: @recepi.id) # find_byでひとつだけ取得してくる
-                     else
-                       RecepiRaty.new
-                     end
+      # @recepi_raty = if RecepiRaty.exists?(customer_id: current_customer.id, recepi_id: @recepi.id)
+      #                 RecepiRaty.find_by(customer_id: current_customer.id, recepi_id: @recepi.id)
+      #               else
+      #                 RecepiRaty.new
+      #               end
+      @recepi_raty = recepi_raty(current_customer.id, @recepi.id)
     end
+  end
+
+    # 無理やりクラスメソッド化してみた例
+  def recepi_raty(customer_id, recepi_id)
+    _recepi_raty = if RecepiRaty.exists?(customer_id: customer_id, recepi_id: recepi_id) # 該当レシピのカスタマーidがあるか判定
+                     RecepiRaty.find_by(customer_id: customer_id, recepi_id: recepi_id) # find_byでひとつだけ取得してくる
+                   else
+                     RecepiRaty.new
+                   end
+    _recepi_raty
   end
 
   def edit; end
