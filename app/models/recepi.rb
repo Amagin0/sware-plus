@@ -19,9 +19,9 @@ class Recepi < ApplicationRecord
   scope :top_rate_fun, -> { raties.order(recepi_fun: :desc).distinct }
 
 
-  # def written_by?(current_customer)
-  #   customer == current_customer || current_customer.admin?
-  # end
+  def written_by?(current_customer)
+    customer == current_customer || current_customer.admin?
+  end
 
   def avg_taste
     if recepi_raties.empty?
