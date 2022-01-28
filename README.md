@@ -48,9 +48,10 @@ Twitterなどで定期的にバズったりしていますが、また作ろう�
 - クリスマスやバレンタインなどの催事のときに一風変わったお菓子を作りたいとき。
 
 ## :clipboard:ER図
-![pf](https://user-images.githubusercontent.com/91787621/150794525-315fbbbf-3e54-4ba6-a92e-7bc91c246499.png)
+![ER図](https://user-images.githubusercontent.com/91787621/150794525-315fbbbf-3e54-4ba6-a92e-7bc91c246499.png)
 
-## :muscle:チャレンジ要素一覧
+## :muscle:設計など
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1UQ84YlG7VAV5Pa4oLtcTzThsAKUIF0pnnBiHnNUSYmA/edit#gid=856357510)<br>
 [チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1rxWOBw5o4TihQqX-bKjiX6ZBEvHCDJnoDnWOgQdE6uo/edit#gid=0)
 
 ## :computer:開発環境
