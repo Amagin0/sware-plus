@@ -51,12 +51,14 @@
     </p>
 
     <div class="card-text text-center">
-      <% if customer_signed_in? && @recepi.written_by?(current_customer) %>
-        <%= link_to "編集", edit_recepi_path(@recepi), class: "btn btn-outline-primary rounded-pill" %>&emsp;
-        <!--モーダルウィンドウ-->
-          <%= render 'recepis/recepi_modal', recepi: @recepi %>
-        <!--ここまで-->
-      <% else %>
+      <% if customer_signed_in? %>
+        <% if @recepi.written_by?(current_customer) %>
+          <%= link_to "編集", edit_recepi_path(@recepi), class: "btn btn-outline-primary rounded-pill" %>&emsp;
+          <!--モーダルウィンドウ-->
+            <%= render 'recepis/recepi_modal', recepi: @recepi %>
+          <!--ここまで-->
+        <% else %>
+        <% end %>
       <% end %>
     </div>
 
