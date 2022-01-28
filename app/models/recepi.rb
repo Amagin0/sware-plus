@@ -1,7 +1,7 @@
 class Recepi < ApplicationRecord
   attachment :recepi_image
   is_impressionable
-  
+
   belongs_to :customer
   has_many :tags, dependent: :destroy
   has_many :genres, through: :tags
@@ -19,10 +19,10 @@ class Recepi < ApplicationRecord
   scope :top_rate_fun, -> { raties.order(recepi_fun: :desc).distinct }
 
 
-  def  written_by?(current_customer)
+  def written_by?(current_customer)
     customer == current_customer || current_customer.admin?
   end
-  
+
   def avg_taste
     if recepi_raties.empty?
       0
