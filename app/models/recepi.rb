@@ -13,7 +13,7 @@ class Recepi < ApplicationRecord
   accepts_nested_attributes_for :recepi_ingredients, :how_to_makes, :tags, allow_destroy: true
 
   validates :recepi_title, length: { maximum: 32 }
-  scope :latest, -> { order(updated_at: :desc) }
+  scope :latest, -> { order(created_at: :desc) }
   scope :raties, -> { Recepi.left_joins(:recepi_raties) }
   scope :top_rate_taste, -> { raties.order(recepi_taste: :desc).distinct }
   scope :top_rate_fun, -> { raties.order(recepi_fun: :desc).distinct }

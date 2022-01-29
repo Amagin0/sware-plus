@@ -12,32 +12,31 @@ class RecepisController < ApplicationController
 
   def index
     @title = 'Recipes'
-    @recepis = if params[:sort_update]
-                 Recepi.latest # 新規順に使用
-               elsif params[:sort_top_rate_taste]
-                 Recepi.top_rate_taste # 美味しい評価が高い順に使用
-               elsif params[:sort_top_rate_fun]
-                 Recepi.top_rate_fun # 面白い評価が高い順に使用
-               else
-                 Recepi.all
-               end
-               
-    # if (params[:keyword]).present?
-    #   if (params[:keyword])[0] == '#'
-    #     @recepis = Genre.search(params[:keyword]).order('created_at DESC')
-    #     @title = params[:keyword]
-    #     render 'recepis/index.html.erb'
-    #     # 検索内容の初めに # がついている場合はジャンル検索=>ジャンルモデル
-    #   else
-    #     @recepis = Recepi.search(params[:keyword]).order('created_at DESC')
-    #     @title = params[:keyword]
-    #     render 'recepis/index.html.erb'
-    #     # #がついていない場合はキーワード検索にわけている=>レシピモデル
-    #   end
-    # else
-    #   render 'recepis/index.html.erb'
-    # end
 
+     if (params[:keyword]).present?
+       if (params[:keyword])[0] == '#'
+         @recepis = Genre.search(params[:keyword])
+         @title = params[:keyword]
+         # 検索内容の初めに # がついている場合はジャンル検索=>ジャンルモデル
+       else
+         @recepis = Recepi.search(params[:keyword])
+         @title = params[:keyword]
+         # #がついていない場合はキーワード検索にわけている=>レシピモデル
+       end
+     else
+       @recepis = Recepi
+     end
+
+    @recepis = if params[:sort_update]
+                 @recepis.latest # 新規順に使用
+               elsif params[:sort_top_rate_taste]
+                 @recepis.top_rate_taste # 美味しい評価が高い順に使用
+               elsif params[:sort_top_rate_fun]
+                 @recepis.top_rate_fun # 面白い評価が高い順に使用
+               else
+                 @recepis.all
+               end
+    render 'recepis/index.html.erb'
   end
 
   def show

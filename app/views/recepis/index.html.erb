@@ -10,12 +10,7 @@
       <div class="chapter-name">
         <h2><strong><%= @title %></strong></h2>
         <span> (全<%= @recepis.count %>件) </span>
-        <%# if (params[:keyword]).present? %>
-          <!--<%= link_to "新しい順", search_path(sort_update: "true", keyword: params[:keyword]) %> | <%= link_to "美味しい順", search_path(sort_top_rate_taste: "true",  keyword: params[:keyword]) %> | <%= link_to "面白い順", search_path(sort_top_rate_fun: "true",  keyword: params[:keyword]) %>-->
-          <!--<%= link_to "新しい順", recepis_path(sort_update: "true", keyword: params[:keyword]) %> | <%= link_to "美味しい順", search_path(sort_top_rate_taste: "true",  keyword: params[:keyword]) %> | <%= link_to "面白い順", search_path(sort_top_rate_fun: "true",  keyword: params[:keyword]) %>-->
-        <%# else %>
-          <%= link_to "新しい順", recepis_path(sort_update: "true") %> | <%= link_to "美味しい順", recepis_path(sort_top_rate_taste: "true") %> | <%= link_to "面白い順", recepis_path(sort_top_rate_fun: "true") %>
-        <%#end %>
+        <%= link_to "新しい順", recepis_path(sort_update: "true", keyword: params[:keyword]) %> | <%= link_to "美味しい順", recepis_path(sort_top_rate_taste: "true",  keyword: params[:keyword]) %> | <%= link_to "面白い順", recepis_path(sort_top_rate_fun: "true",  keyword: params[:keyword]) %>
       </div>
         <%= render partial: "layouts/recepi_index", collection: @recepis, as: 'recepi' %>
     </div>
