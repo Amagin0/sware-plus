@@ -60,3 +60,16 @@ Twitterなどで定期的にバズったりしていますが、また作ろう�
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
+
+## 使用素材
+- [pixabay様](https://pixabay.com/ja/)
+
+## 大いに参考にさせていただいたサイト様
+- [Online Tutorials(CSS)(YouTube)](https://www.youtube.com/c/OnlineTutorials4Designers)
+- [ログインと新規登録を同じ画面](https://github.com/heartcombo/devise/wiki/How-To:-Display-a-custom-sign_in-form-anywhere-in-your-app)
+- [付箋風デザイン(CSS)](https://www.ya-n.com/blog/2019-09-23-post-it/)
+- [CSSをページ毎に適用](https://note.com/sashimi299/n/n53cdf23effce)
+- [Cocoon(Qiita)](https://qiita.com/hitochan/items/5a45a95e644492d66160)
+- [Cocoon(Qiita)](https://qiita.com/kmjooh/items/a1613531873a22fa7862)
+- [権利者権限](https://nyoken.com/rails-admin)
+- [検索機能](https://tomo-bb-aki0117115.hatenablog.com/entry/2020/11/02/225446)
