@@ -1,5 +1,4 @@
 <%= stylesheet_link_tag 'signup', media: 'all'%>
-<%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="container">
     <div class="blueBg">
@@ -34,10 +33,16 @@
         <div class="field">
           <%= f.label :Name %>
           <%= f.text_field :name, autofocus: true %>
+            <% if @customer.errors.include?(:name) %>
+              <p style="color: red;"><%= @customer.errors.full_messages_for(:name).first %></p>
+            <% end %>
         </div>
         <div class="field">
           <%= f.label :Email %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <% if @customer.errors.include?(:email) %>
+              <p style="color: red;"><%= @customer.errors.full_messages_for(:email).first %></p>
+            <% end %>
         </div>
         <div class="field">
           <%= f.label :Password %>
@@ -45,10 +50,16 @@
               <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %>
           <%= f.password_field :password, autocomplete: "new-password" %>
+            <% if @customer.errors.include?(:password) %>
+              <p style="color: red;"><%= @customer.errors.full_messages_for(:password).first %></p>
+            <% end %>
         </div>
         <div class="field">
-          <%= f.label :Password_confirmation %><br />
+          <%= f.label :Password_confirmation %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <% if @customer.errors.include?(:password) %>
+              <p style="color: red;"><%= @customer.errors.full_messages_for(:password).first %></p>
+            <% end %>
           <%= f.submit "Sign up" %>
         </div>
       </div>
