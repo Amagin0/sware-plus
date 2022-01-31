@@ -13,6 +13,7 @@ ja:
           # view側： User.human_attribute_name :name => "名前" /　t("activerecord.attributes.user.name")と同じ
           id: ID
           recepi_title: タイトル
+          recepi_image: メイン画像
         recepi_ingredients:
           ingredient: 材料
         how_to_makes:
