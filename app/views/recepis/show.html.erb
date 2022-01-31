@@ -2,118 +2,124 @@
 <% @page_title = @recepi.recepi_title %>
 
 <%= render "layouts/sidebar" %>
+<div class="offset-2">
+  <div class="alert">
+    <%= alert %>
+  </div>
+  <div class="card">
 
-<div class="card offset-2">
-  <img class="card-img-top"><%= attachment_image_tag(@recepi, :recepi_image, :fill, 600, 600, fallback: "default_product.png") %></p>
-  <div class="card-body">
+    <img class="card-img-top"><%= attachment_image_tag(@recepi, :recepi_image, :fill, 600, 600, fallback: "default_product.png") %></p>
+    <div class="card-body">
 
+      <% if customer_signed_in? %>
+        <div class="text-left favorite-btn_<%= @recepi.id %>">
+          <%= render "favorites/favorite-btn", recepi: @recepi %>
+        </div>
+      <% else %>
+      <% end %>
+
+      <div class="card-title text-left" id="recepi_<%= @recepi.id %>">
+        閲覧数：<%= @recepi.impressionist_count(:filter => :session_hash) %>&emsp;
+        <%= link_to "#recepi_comment_area" do %>
+          コメント数：<%= @recepi.recepi_comments.count %>件
+        <% end %>
+      </div>
+      <h4 class="card-title text-center"><strong><%= @recepi.recepi_title %></strong></h4>
+
+      <p class="card-text">
+        <span class="mark text-left"><strong>材料</strong></span><br>
+        <div class="card-text-ingredients">
+          <% @recepi.recepi_ingredients.each do |recepi_ingredient| %>
+            <p class="post-it-ingredients"><%= recepi_ingredient.ingredient %></p><br>
+          <% end %>
+        </div>
+      </p>
+
+      <p class="card-text">
+        <span class="mark text-left"><strong>作り方</strong></span><br>
+        <% @recepi.how_to_makes.each do |how_to_make| %>
+          <div class="how-to-make-box">
+            <p class="post-it-how-to-makes"><%= how_to_make.recepi_make %></p>
+            <p><%= attachment_image_tag(how_to_make, :how_to_image) %></p>
+          </div>
+        <% end %>
+      </p>
+
+      <p class="card-text">
+        <span class="mark text-left"><strong>ジャンル</strong></span><br>
+        <% @recepi.genres.each do |genre| %>
+          <div class="post-it-genres">
+            <%= genre.genre_name %>
+          </div>
+        <% end %>
+      </p>
+
+      <div class="card-text text-center">
+        <% if customer_signed_in? && @recepi.written_by?(current_customer) %>
+          <%= link_to "編集", edit_recepi_path(@recepi), class: "btn btn-outline-primary rounded-pill" %>&emsp;
+          <!--モーダルウィンドウ-->
+            <%= render 'recepis/recepi_modal', recepi: @recepi %>
+          <!--ここまで-->
+        <% else %>
+        <% end %>
+      </div>
+
+      <div class="card-footer text-right">
+    	  <%= link_to customer_path(@recepi.customer) do %>
+          <%#= attachment_image_tag(@recepi.customer, :customer_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
+          レシピ製作者：<%= @recepi.customer.name %>
+        <% end %>
+        <% if customer_signed_in? %>
+          <div id="follow_<%= @recepi.customer.id %>">
+            <%= render "recepis/follow", customer: @recepi.customer %>
+          </div>
+        <% else %>
+        <% end %>
+      </div>
+      <% if customer_signed_in? %>
+        <% if RecepiRaty.exists?(customer_id: current_customer.id ,recepi_id: @recepi.id) %>
+        <!--コントローラーと同じ記述で場合分け。過去に評価したことがあるかを調べている-->
+          <%= form_with model:[@recepi, @recepi_raty], url: recepi_recepi_raties_path(@recepi), local: true, method: :patch do |f| %>
+            <div class="card-footer text-center">
+              <%= f.label :美味しさ %>
+              <div id="raty_taste_star" data-score="<%= @recepi_raty.recepi_taste %>"></div>
+              <%= f.label :面白さ %>
+              <div id="raty_fun_star" data-score="<%= @recepi_raty.recepi_fun %>"></div>
+                <!--data-scoreで前回値をもってきている-->
+            </div>
+            <div class="text-center"></div>
+          <% end %>
+        <% else %>
+          <%= form_with model:[@recepi, @recepi_raty], url: recepi_recepi_raties_path(@recepi), local: true, method: :post do |f| %>
+            <div class="card-footer text-center">
+                <%= f.label :美味しさ %>
+              <div id="raty_taste_star_new"></div>
+                <%= f.label :面白さ %>
+              <div id="raty_fun_star_new"></div>
+            </div>
+            <div class="text-center">
+              <%= f.submit "評価する", class: "btn btn-outline-primary rounded-pill" %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <h2>＜みんなのコメント＞</h2>
+    <div id="recepi_comment_area">
+      <%= render 'recepi_comments/index', recepi: @recepi %>
+    </div>
     <% if customer_signed_in? %>
-      <div class="text-left favorite-btn_<%= @recepi.id %>">
-        <%= render "favorites/favorite-btn", recepi: @recepi %>
+      <div>
+        <%= render 'recepi_comments/form', recepi: @recepi, recepi_comment: @recepi_comment %>
       </div>
     <% else %>
+      <h3>コメントはログインユーザーのみが出来ます</h3>
     <% end %>
 
-    <div class="card-title text-left" id="recepi_<%= @recepi.id %>">
-      閲覧数：<%= @recepi.impressionist_count(:filter => :session_hash) %>&emsp;
-      <%= link_to "#recepi_comment_area" do %>
-        コメント数：<%= @recepi.recepi_comments.count %>件
-      <% end %>
-    </div>
-    <h4 class="card-title text-center"><strong><%= @recepi.recepi_title %></strong></h4>
-
-    <p class="card-text">
-      <span class="mark text-left"><strong>材料</strong></span><br>
-      <div class="card-text-ingredients">
-        <% @recepi.recepi_ingredients.each do |recepi_ingredient| %>
-          <p class="post-it-ingredients"><%= recepi_ingredient.ingredient %></p><br>
-        <% end %>
-      </div>
-    </p>
-
-    <p class="card-text">
-      <span class="mark text-left"><strong>作り方</strong></span><br>
-      <% @recepi.how_to_makes.each do |how_to_make| %>
-        <div class="how-to-make-box">
-          <p class="post-it-how-to-makes"><%= how_to_make.recepi_make %></p>
-          <p><%= attachment_image_tag(how_to_make, :how_to_image) %></p>
-        </div>
-      <% end %>
-    </p>
-
-    <p class="card-text">
-      <span class="mark text-left"><strong>ジャンル</strong></span><br>
-      <% @recepi.genres.each do |genre| %>
-        <div class="post-it-genres">
-          <%= genre.genre_name %>
-        </div>
-      <% end %>
-    </p>
-
-    <div class="card-text text-center">
-      <% if customer_signed_in? && @recepi.written_by?(current_customer) %>
-        <%= link_to "編集", edit_recepi_path(@recepi), class: "btn btn-outline-primary rounded-pill" %>&emsp;
-        <!--モーダルウィンドウ-->
-          <%= render 'recepis/recepi_modal', recepi: @recepi %>
-        <!--ここまで-->
-      <% else %>
-      <% end %>
-    </div>
-
-    <div class="card-footer text-right">
-  	  <%= link_to customer_path(@recepi.customer) do %>
-        <%#= attachment_image_tag(@recepi.customer, :customer_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
-        レシピ製作者：<%= @recepi.customer.name %>
-      <% end %>
-      <% if customer_signed_in? %>
-        <div id="follow_<%= @recepi.customer.id %>">
-          <%= render "recepis/follow", customer: @recepi.customer %>
-        </div>
-      <% else %>
-      <% end %>
-    </div>
-    <% if customer_signed_in? %>
-      <% if RecepiRaty.exists?(customer_id: current_customer.id ,recepi_id: @recepi.id) %>
-      <!--コントローラーと同じ記述で場合分け。過去に評価したことがあるかを調べている-->
-        <%= form_with model:[@recepi, @recepi_raty], url: recepi_recepi_raties_path(@recepi), local: true, method: :patch do |f| %>
-          <div class="card-footer text-center">
-            <%= f.label :美味しさ %>
-            <div id="raty_taste_star" data-score="<%= @recepi_raty.recepi_taste %>"></div>
-            <%= f.label :面白さ %>
-            <div id="raty_fun_star" data-score="<%= @recepi_raty.recepi_fun %>"></div>
-              <!--data-scoreで前回値をもってきている-->
-          </div>
-          <div class="text-center"></div>
-        <% end %>
-      <% else %>
-        <%= form_with model:[@recepi, @recepi_raty], url: recepi_recepi_raties_path(@recepi), local: true, method: :post do |f| %>
-          <div class="card-footer text-center">
-              <%= f.label :美味しさ %>
-            <div id="raty_taste_star_new"></div>
-              <%= f.label :面白さ %>
-            <div id="raty_fun_star_new"></div>
-          </div>
-          <div class="text-center">
-            <%= f.submit "評価する", class: "btn btn-outline-primary rounded-pill" %>
-          </div>
-        <% end %>
-      <% end %>
-    <% end %>
   </div>
-
-  <h2>＜みんなのコメント＞</h2>
-  <div id="recepi_comment_area">
-    <%= render 'recepi_comments/index', recepi: @recepi %>
-  </div>
-  <% if customer_signed_in? %>
-    <div>
-      <%= render 'recepi_comments/form', recepi: @recepi, recepi_comment: @recepi_comment %>
-    </div>
-  <% else %>
-    <h3>コメントはログインユーザーのみが出来ます</h3>
-  <% end %>
-
 </div>
+
 
 <script>
   $('#raty_taste_star').raty({

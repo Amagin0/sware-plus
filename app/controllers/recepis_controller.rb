@@ -69,6 +69,8 @@ class RecepisController < ApplicationController
   def update
     if @recepi.update(recepi_params)
       redirect_to recepi_path(@recepi)
+    else
+      render 'edit'
     end
   end
 

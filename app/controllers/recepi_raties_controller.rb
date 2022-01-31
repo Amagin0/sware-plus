@@ -8,7 +8,7 @@ class RecepiRatiesController < ApplicationController
     if @recepi_raty.save
       redirect_to recepis_path
     else
-      render 'recepis/show'
+      redirect_to recepi_path(@recepi), alert: 'Error：0.5以上で評価してください'
     end
   end
 

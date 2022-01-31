@@ -1,4 +1,6 @@
   <%= form_with model: recepi, local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+
     <table class="table table-borderless col-sm-6">
       <tr>
         <th></th>

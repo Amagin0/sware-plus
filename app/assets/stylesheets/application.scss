@@ -37,3 +37,26 @@ body
   background: #ebf5fc;
   background-image: image-url("brushed-alum.png");
 }
+
+// .alert
+// {
+//   color: red;
+//   text-align: center;
+//   font-size: calc(18 / 1400 * 100vw);
+// }
+
+.alert
+{
+  color: red;
+  font-size: calc(18 / 1400 * 100vw);
+  text-align: center;
+}
+
+.error
+{
+  color:#262626;
+  background:#FFEBE8;
+  text-align: center;
+  border:2px solid #990000;
+  padding:12px; font-weight:850;
+}

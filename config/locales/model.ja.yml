@@ -1,0 +1,25 @@
+ja:
+  activerecord:
+    models:
+      # view側： User.model_name.human => "ユーザ" / t("activerecord.models.user")と同じ
+      customer: ユーザー
+      recepi: レシピ
+      recepi_ingredient: 材料
+      how_to_make: 作り方
+      tag: ジャンル
+    # model毎に定義したいattributesを記述
+    attributes:
+        recepi:
+          # view側： User.human_attribute_name :name => "名前" /　t("activerecord.attributes.user.name")と同じ
+          id: ID
+          recepi_title: タイトル
+        recepi_ingredients:
+          ingredient: 材料
+        how_to_makes:
+          recepi_make: 作り方
+        tags:
+          genre: ジャンル
+  # 全てのmodelで共通して使用するattributesを定義
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日
