@@ -1,4 +1,7 @@
 <h1 class="offset-1 mt-5">Follow Users</h1>
+<% @page_title = 'Follow' %>
+<%= render "layouts/sidebar" %>
+
 <div class="mt-5">
   <%= render partial: "follow_index", locals: {customers: @customers, name: "フォローしている"} %>
 </div>
