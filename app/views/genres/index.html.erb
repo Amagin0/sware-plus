@@ -26,7 +26,7 @@
       <table class="table offset-2 col-sm-5">
           <% @genres.each do |genre| %>
             <tr>
-              <td><%= link_to genre.genre_name, search_path(keyword: genre.genre_name) %></td>
+              <td><%= link_to genre.genre_name, recepis_path(keyword: genre.genre_name) %></td>
               <td>( <%= Genre.left_joins(:tags).where(tags: { genre_id: genre.id }).count %> 件)</td>
             </tr>
           <% end %>
