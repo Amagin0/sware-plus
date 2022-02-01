@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, except: %i[show my_recepi my_favorite]
   before_action :set_customer, only: %i[show my_recepi my_favorite edit update]
 
   def index; end
