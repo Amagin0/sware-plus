@@ -28,11 +28,11 @@ class RecepisController < ApplicationController
      end
 
     @recepis = if params[:sort_update]
-                 @recepis.latest # 新規順に使用
+                 @recepis.latest.includes(:recepi_raties) # 新規順に使用
                elsif params[:sort_top_rate_taste]
-                 @recepis.top_rate_taste # 美味しい評価が高い順に使用
+                 @recepis.top_rate_taste.includes(:recepi_raties) # 美味しい評価が高い順に使用
                elsif params[:sort_top_rate_fun]
-                 @recepis.top_rate_fun # 面白い評価が高い順に使用
+                 @recepis.top_rate_fun.includes(:recepi_raties) # 面白い評価が高い順に使用
                else
                  @recepis.all.includes(:recepi_raties)
                end

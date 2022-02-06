@@ -8,13 +8,13 @@ class CustomersController < ApplicationController
 
   def my_recepi
     @sorted_recepis = if params[:sort_update]
-                        Recepi.latest.where(customer_id: @customer.id) # 新規順に使用
+                        Recepi.latest.where(customer_id: @customer.id).includes(:recepi_raties) # 新規順に使用
                       elsif params[:sort_top_rate_taste]
-                        Recepi.top_rate_taste.where(customer_id: @customer.id) # 美味しい評価が高い順に使用
+                        Recepi.top_rate_taste.where(customer_id: @customer.id).includes(:recepi_raties) # 美味しい評価が高い順に使用
                       elsif params[:sort_top_rate_fun]
-                        Recepi.top_rate_fun.where(customer_id: @customer.id) # 面白い評価が高い順に使用
+                        Recepi.top_rate_fun.where(customer_id: @customer.id).includes(:recepi_raties) # 面白い評価が高い順に使用
                       else
-                        @customer.recepis
+                        @customer.recepis.includes(:recepi_raties)
                       end
   end
 

@@ -1,5 +1,5 @@
 <div>
-  <% recepi.recepi_comments.each do |recepi_comment| %>
+  <% recepi.recepi_comments.includes(:customer).each do |recepi_comment| %>
     <% recepi_comment_customer = recepi_comment.customer %>
     <tr>
       <th>

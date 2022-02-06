@@ -9,10 +9,11 @@
       <div class="chapter-name">
         <h2><strong><%= @customer.name %> Favorites</strong></h2>
       </div>
-      <% @customer.favorites.each do |favorite| %>
+      <% @customer.favorites.includes(recepi: :recepi_raties).each do |favorite| %>
+      <!--N+1問題解決のために、recepi に紐づいているrecepi_ratyが必要-->
         <%= render "layouts/recepi_index", recepi: favorite.recepi %>
       <% end %>
-      
+
     </div>
   </div>
 </div>
