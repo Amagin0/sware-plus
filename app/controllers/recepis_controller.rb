@@ -34,7 +34,7 @@ class RecepisController < ApplicationController
                elsif params[:sort_top_rate_fun]
                  @recepis.top_rate_fun # 面白い評価が高い順に使用
                else
-                 @recepis.all
+                 @recepis.all.includes(:recepi_raties)
                end
     render 'recepis/index.html.erb'
   end

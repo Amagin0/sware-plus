@@ -1,6 +1,6 @@
 class RanksController < ApplicationController
   def rank
-    @recepis = Recepi.all
+    @recepis = Recepi.all.includes(:recepi_raties)
 
     # 月間ランキング(お気に入り数)
     @month_recepi_favorite_ranks = Recepi.find(Favorite.group(:recepi_id).where(created_at: Time.current.all_month).order('count(recepi_id) desc').pluck(:recepi_id))
