@@ -3,7 +3,7 @@
     <div class="face face1">
       <div class="content">
         <div class="img">
-          <%= link_to recepi_path(recepi) do %>
+          <%= link_to recepi_path(recepi), data: {"turbolinks" => false} do %>
             <%= attachment_image_tag(recepi, :recepi_image, :fill, 100, 100, fallback: "no-image-icon.png") %>
           <% end %>
         </div>
@@ -12,7 +12,7 @@
     <div class="face face2">
       <div class="content">
         <p><%= recepi.recepi_title %></p>
-        <%= link_to "Read More", recepi_path(recepi) %>
+        <%= link_to "Read More", recepi_path(recepi), data: {"turbolinks" => false} %>
         <p>
           <i class="fas fa-utensils"></i>：
           <%= image_tag asset_path("star-on.png", alt: "Star-on") %>
