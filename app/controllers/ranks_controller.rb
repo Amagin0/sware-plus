@@ -15,6 +15,7 @@ class RanksController < ApplicationController
 
     @recepi_ranks_week = Recepi.left_joins(:recepi_raties).where(created_at: Time.current.all_week).includes(:recepi_raties)
     @recepi_ranks_month = Recepi.left_joins(:recepi_raties).where(created_at: Time.current.all_month).includes(:recepi_raties)
+
     # 月間ランキング(美味しさ)
     @month_recepi_taste_ranks = @recepi_ranks_month.order(recepi_taste: :desc).distinct
     # 週間ランキング(美味しさ)

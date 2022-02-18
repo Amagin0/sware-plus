@@ -48,7 +48,7 @@ body{
     list-style: none;
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: calc(3 / 1400 * 100vw);
 }
 
 .sidebar header .image,
