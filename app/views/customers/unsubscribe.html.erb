@@ -2,15 +2,13 @@
   <div class="text-center mt-5">
     <h2>本当に退会しますか？</h2>
     <p>
-      退会すると、会員登録情報や<br>
-      これまでの購入履歴が閲覧できなくなります。</br>
+      退会すると、会員登録情報が<br>
+      閲覧できなくなり、お気に入り登録などが出来なくなります。</br>
       退会する場合は、「退会する」をクリックしてください。
     </p>
     <div>
       <%= link_to "退会しない", customers_path, class: "btn-lg btn-primary" %>
-
       <%= link_to "退会する", deleted_customers_path, method: :PATCH, data: {confirm: "本当に退会してもよろしいですか？"}, class: "btn-sm btn-danger ml-3" %>
     </div>
-  </div>
   </div>
 </div>
