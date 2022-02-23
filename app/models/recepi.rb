@@ -15,7 +15,6 @@ class Recepi < ApplicationRecord
   validates :recepi_title, length: { maximum: 32 }, presence: true
   validates :recepi_image, presence: true
 
-
   scope :latest, -> { order(created_at: :desc) }
   scope :raties, -> { Recepi.left_joins(:recepi_raties) }
   scope :top_rate_taste, -> { raties.order(recepi_taste: :desc).distinct }

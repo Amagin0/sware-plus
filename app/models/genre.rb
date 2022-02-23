@@ -4,9 +4,15 @@ class Genre < ApplicationRecord
   validates :genre_name, presence: true
 
   def self.search(search)
-    if search != '#'
+    if !search.nil?
       genre = Genre.where('genre_name LIKE?', "%#{search}%")
-      genre[0].recepis
+      if search != '#' && genre.count != 0
+        genre[0].recepis
+      elsif search == '#'
+        Recepi.all
+      else
+        genre = Genre.where('genre_name LIKE?', "%#{search}%")
+      end
     else
       Recepi.all
     end
