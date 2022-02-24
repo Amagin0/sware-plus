@@ -61,7 +61,6 @@ class RecepisController < ApplicationController
                    else
                      RecepiRaty.new
                    end
-    _recepi_raty
   end
 
   def edit; end

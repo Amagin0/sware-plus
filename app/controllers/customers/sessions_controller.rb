@@ -1,6 +1,11 @@
 class Customers::SessionsController < Devise::SessionsController
   before_action :customer_state, only: [:create]
 
+  # ログイン失敗時の遷移先
+  def failed
+    redirect_to new_customer_registration_path
+  end
+
   protected
   # 退会しているかを判断するメソッド
   def customer_state
@@ -12,5 +17,11 @@ class Customers::SessionsController < Devise::SessionsController
     if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
       redirect_to root_path
     end
+  end
+
+  # ログイン失敗時にsession_pathに遷移してしまうのを修正
+  # デフォルトの設定からauth_optionsをオーバーライドする
+  def auth_options
+    { scope: resource_name, recall: "#{controller_path}#failed" }
   end
 end
