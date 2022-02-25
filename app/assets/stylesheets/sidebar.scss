@@ -1,4 +1,5 @@
-:root{
+:root
+{
     /* ===== Colors ===== */
     --body-color: #ebf5fc;
     --sidebar-color: #FFF;
@@ -14,20 +15,23 @@
     --tran-05: all 0.3s ease;
 }
 
-body{
+body
+{
     max-height: 100vh;
     background-color: var(--body-color);
     transition: var(--tran-05);
     background-image: image-url("brushed-alum.png");
 }
 
-::selection{
+::selection
+{
     background-color: var(--primary-color);
     color: #fff;
 }
 
 /* ===== Sidebar ===== */
- .sidebar{
+.sidebar
+{
     position: fixed;
     top: 0;
     left: 0;
@@ -38,12 +42,15 @@ body{
     transition: var(--tran-05);
     z-index: 100;
 }
-.sidebar.close{
+
+.sidebar.close
+{
     width: calc(88 / 1400 * 100vw);
 }
 
 /* ===== Reusable code - Here ===== */
-.sidebar li{
+.sidebar li
+{
     height: calc(50 / 1400 * 100vw);
     list-style: none;
     display: flex;
@@ -52,12 +59,14 @@ body{
 }
 
 .sidebar header .image,
-.sidebar i{
+.sidebar i
+{
     min-width: calc(60 / 1400 * 100vw);
     border-radius: (6 / 1400 * 100vw);
 }
 
-.sidebar i{
+.sidebar i
+{
     min-width: calc(60 / 1400 * 100vw);
     border-radius: calc(6 / 1400 * 100vw);
     height: 100%;
@@ -68,59 +77,73 @@ body{
 }
 
 .sidebar .text,
-.sidebar i{
+.sidebar i
+{
     color: var(--text-color);
     transition: var(--tran-03);
 }
 
-.sidebar .text{
+.sidebar .text
+{
     font-size: calc(15 / 1400 * 100vw);
     font-weight: 500;
     white-space: nowrap;
     opacity: 1;
 }
-.sidebar.close .text{
+
+.sidebar.close .text
+{
     display: none;
 }
 /* =========================== */
 
-.sidebar header{
+.sidebar header
+{
     position: relative;
 }
 
-.sidebar header .image-text{
+.sidebar header .image-text
+{
     display: flex;
     align-items: center;
     margin-top: calc(30 / 1400 * 100vw);
 }
-.sidebar header .logo-text{
+
+.sidebar header .logo-text
+{
     display: flex;
     flex-direction: column;
 }
-header .image-text .name {
+
+header .image-text .name
+{
     margin-top: calc(2 / 1400 * 100vw);
     font-size: calc(18 / 1400 * 100vw);
     font-weight: 600;
 }
 
-header .image-text .profession{
+header .image-text .profession
+{
     font-size: calc(16 / 1400 * 100vw);
     margin-top: calc(-2 / 1400 * 100vw);
     display: block;
 }
 
-.sidebar header .image{
+.sidebar header .image
+{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.sidebar header .image img{
+.sidebar header .image img
+{
     width: calc(40 / 1400 * 100vw);
     border-radius: calc(6 / 1400 * 100vw);
 }
 
-.sidebar header .toggle{
+.sidebar header .toggle
+{
     position: absolute;
     top: 50%;
     right: calc(-25 / 1400 * 100vw);
@@ -138,26 +161,31 @@ header .image-text .profession{
     transition: var(--tran-05);
 }
 
-body.dark .sidebar header .toggle{
+body.dark .sidebar header .toggle
+{
     color: var(--text-color);
 }
 
-.sidebar.close .toggle{
+.sidebar.close .toggle
+{
     transform: translateY(-50%) rotate(0deg);
 }
 
-.sidebar .menu{
+.sidebar .menu
+{
     margin-top: calc(40 / 1400 * 100vw);
 }
 
-.sidebar li.search-box{
+.sidebar li.search-box
+{
     border-radius: calc(6 / 1400 * 100vw);
     background-color: var(--primary-color-light);
     cursor: pointer;
     transition: var(--tran-05);
 }
 
-.sidebar li.search-box input{
+.sidebar li.search-box input
+{
     height: 100%;
     width: 100%;
     outline: none;
@@ -170,15 +198,18 @@ body.dark .sidebar header .toggle{
     transition: var(--tran-05);
 }
 
-.sidebar.close li.search-box{
+.sidebar.close li.search-box
+{
     justify-content: center;
 }
 
-.sidebar.close li.search-box input{
+.sidebar.close li.search-box input
+{
     display: none;
 }
 
-.sidebar li a{
+.sidebar li a
+{
     list-style: none;
     height: 100%;
     background-color: transparent;
@@ -191,29 +222,38 @@ body.dark .sidebar header .toggle{
     transition: var(--tran-03);
 }
 
-.sidebar.close li a{
+.sidebar.close li a
+{
     justify-content: center;
 }
-.sidebar li a:hover{
+
+.sidebar li a:hover
+{
     background-color: var(--primary-color);
 }
+
 .sidebar li a:hover i,
-.sidebar li a:hover .text{
+.sidebar li a:hover .text
+{
     color: var(--sidebar-color);
 }
 
-.sidebar .menu-bar{
+.sidebar .menu-bar
+{
     height: calc(100% - 55px/ 1400 * 100vw);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow-y: scroll;
 }
-.menu-bar::-webkit-scrollbar{
+
+.menu-bar::-webkit-scrollbar
+{
     display: none;
 }
 
-.home{
+.home
+{
     position: absolute;
     top: 0;
     top: 0;
@@ -223,14 +263,17 @@ body.dark .sidebar header .toggle{
     background-color: var(--body-color);
     transition: var(--tran-05);
 }
-.home .text{
+
+.home .text
+{
     font-size: calc(30 / 1400 * 100vw);
     font-weight: 500;
     color: var(--text-color);
     padding: calc(12 60 / 1400 * 100vw);
 }
 
-.sidebar.close ~ .home{
+.sidebar.close ~ .home
+{
     left: calc(78 / 1400 * 100vw);
     height: 100vh;
     width: calc(100% - 78px/ 1400 * 100vw);

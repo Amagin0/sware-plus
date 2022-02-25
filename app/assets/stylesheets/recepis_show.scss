@@ -22,13 +22,13 @@ a
   width: 40vw;
 }
 
-.card h4{
+.card .card-title{
   position: relative;
   padding: 1.5rem 1.5rem calc(1.5rem + 10px);
   border: 2px solid #000;
 }
 
-.card h4:after {
+.card .card-title:after {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -125,4 +125,11 @@ a
 .recepi-comment-submit
 {
   margin-bottom: 4rem;
+}
+
+.cant_comment
+{
+  text-align: center;
+  color: red;
+  padding: calc(15 / 1400* 100vh)
 }

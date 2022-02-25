@@ -29,7 +29,6 @@ a
   height: 320px;
   margin: 15px;
   overflow: hidden;
-
 }
 
 .container .card .imgBx
@@ -40,7 +39,6 @@ top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-
 }
 
 .container .card .imgBx img
@@ -51,7 +49,7 @@ height: 100%;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  }
+}
 
 .container .card .contentBx::before
 {
@@ -92,7 +90,6 @@ z-index: 1;
 transition: 0.5s;
 transform: translateX(-300px);
 transition-delay: 0s;
-
 }
 
 .container .card:hover .contentBx .content

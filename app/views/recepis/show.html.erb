@@ -18,7 +18,7 @@
       <% else %>
       <% end %>
 
-      <div class="card-title text-left" id="recepi_<%= @recepi.id %>">
+      <div class="text-left" id="recepi_<%= @recepi.id %>">
         閲覧数：<%= @recepi.impressionist_count(:filter => :session_hash) %>&emsp;
         <%= link_to "#recepi_comment_area" do %>
           コメント数：<%= @recepi.recepi_comments.count %>件
@@ -114,7 +114,7 @@
         <%= render 'recepi_comments/form', recepi: @recepi, recepi_comment: @recepi_comment %>
       </div>
     <% else %>
-      <h4>コメントはログインユーザーのみが出来ます</h4>
+      <h4 class="cant_comment">コメントはログインユーザーのみが出来ます</h4>
     <% end %>
 
   </div>
