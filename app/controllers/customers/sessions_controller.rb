@@ -1,5 +1,6 @@
 class Customers::SessionsController < Devise::SessionsController
   before_action :customer_state, only: [:create]
+  before_action :move_to_signed_in
 
   # ログイン失敗時の遷移先
   def failed
@@ -24,4 +25,12 @@ class Customers::SessionsController < Devise::SessionsController
   def auth_options
     { scope: resource_name, recall: "#{controller_path}#failed" }
   end
+
+  # サインインしていないユーザーは新規登録画面へ遷移
+  def move_to_signed_in
+    unless customer_signed_in?
+      redirect_to new_customer_registration_path
+    end
+  end
+
 end
