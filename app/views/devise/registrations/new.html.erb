@@ -2,13 +2,13 @@
 
   <div class="container">
     <div class="blueBg">
-      <div class="box signin">
-        <h2>Already Have an Account ?</h2>
-        <button class="signinBtn">Sign in</button>
-      </div>
       <div class="box signup">
         <h2>Don't Have an Account ?</h2>
         <button class="signupBtn">Sign up</button>
+      </div>
+      <div class="box signin">
+        <h2>Already Have an Account ?</h2>
+        <button class="signinBtn">Sign in</button>
       </div>
     </div>
     <div class="formBx">
@@ -74,12 +74,12 @@ document.addEventListener("turbolinks:load", function(){
   const formBx = document.querySelector('.formBx');
   const body = document.querySelector('body')
 
-  signupBtn.onclick = function () {
+  signinBtn.onclick = function () {
     formBx.classList.add('active')
     body.classList.add('active')
   }
 
-  signinBtn.onclick = function () {
+  signupBtn.onclick = function () {
     formBx.classList.remove('active')
     body.classList.remove('active')
   }

@@ -95,24 +95,24 @@ body.active
   transition: 0.5s;
 }
 
-.formBx .signinForm
+.formBx .signupForm
 {
   transition-delay: 0.16s;
 }
 
-.formBx.active .signinForm
+.formBx.active .signupForm
 {
   left: -100%;
   transition-delay: 0s;
 }
 
-.formBx .signupForm
+.formBx .signinForm
 {
   left: 100%;
   transition-delay: 0s;
 }
 
-.formBx.active .signupForm
+.formBx.active .signinForm
 {
   left: 0;
   transition-delay: 0.16s;
@@ -125,7 +125,7 @@ body.active
   flex-direction: column;
 }
 
-.formBx .signinForm h2
+.formBx .signupForm h2
 {
   font-size: 2em;
   color: #333;
@@ -133,7 +133,7 @@ body.active
   font-weight: 500;
 }
 
-.signupForm h2
+.signinForm h2
 {
   font-size: 2em;
   color: #333;
@@ -159,7 +159,7 @@ body.active
   cursor: pointer;
 }
 
-.formBx.active .signupForm input[type="submit"]
+.formBx.active .signinForm input[type="submit"]
 {
   background: #fdc8f4;
 }
